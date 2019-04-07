@@ -390,9 +390,9 @@ class TownshipsTableSeeder extends Seeder
 	        'updated_at' => now()
         ]);
 
-        //Mahar Aung Myay
+        //Chan Mya Thazi
         DB::table('townships')->insert([
-            'name' 		 => 'Mahar Aung Myay',
+            'name' 		 => 'Chan Mya Thazi',
             'city_id'	 =>	'2',
             'created_at' => now(),
 	        'updated_at' => now()
@@ -406,36 +406,188 @@ class TownshipsTableSeeder extends Seeder
 	        'updated_at' => now()
         ]);
 
-        //Pyi Gyi Tan Kon
+        //Kyaukpadaung
         DB::table('townships')->insert([
-            'name' 		 => 'Pyi Gyi Tan Kon',
+            'name' 		 => 'Kyaukpadaung',
             'city_id'	 =>	'2',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
 
-        //Amarapura
+        //Kyaukse
         DB::table('townships')->insert([
-            'name' 		 => 'Amarapura',
+            'name' 		 => 'Kyaukse',
             'city_id'	 =>	'2',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
 
-        //Pa Thein Gyi
+        //Maha Aungmye
         DB::table('townships')->insert([
-            'name' 		 => 'Pa Thein Gyi',
+            'name' 		 => 'Maha Aungmye',
             'city_id'	 =>	'2',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
 
-        //Nay Pyi Taw
+        //Mahlaing
         DB::table('townships')->insert([
-            'name' 		 => 'Nay Pyi Taw',
+            'name' 		 => 'Mahlaing',
             'city_id'	 =>	'2',
             'created_at' => now(),
 	        'updated_at' => now()
+        ]);
+
+        //Meiktila
+        DB::table('townships')->insert([
+            'name'       => 'Meiktila',
+            'city_id'    => '2',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        //Mogok
+        DB::table('townships')->insert([
+            'name'       => 'Mogok',
+            'city_id'    => '2',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        //Myingyan
+        DB::table('townships')->insert([
+            'name'       => 'Myingyan',
+            'city_id'    => '2',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        //Myittha
+        DB::table('townships')->insert([
+            'name'       => 'Myittha',
+            'city_id'    => '2',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        //Natogyi
+        DB::table('townships')->insert([
+            'name'       => 'Natogyi',
+            'city_id'    => '2',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        //Ngazun
+        DB::table('townships')->insert([
+            'name'       => 'Ngazun',
+            'city_id'    => '2',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        //Nyaung-U
+        DB::table('townships')->insert([
+            'name'       => 'Nyaung-U',
+            'city_id'    => '2',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        //Patheingyi
+        DB::table('townships')->insert([
+            'name'       => 'Patheingyi',
+            'city_id'    => '2',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        //Pyawbwe 
+        DB::table('townships')->insert([
+            'name'       => 'Pyawbwe ',
+            'city_id'    => '2',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        //Pyigyidagun 
+        DB::table('townships')->insert([
+            'name'       => 'Pyigyidagun ',
+            'city_id'    => '2',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        //Pyinoolwin
+        DB::table('townships')->insert([
+            'name'       => 'Pyinoolwin',
+            'city_id'    => '2',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        //Singu
+        DB::table('townships')->insert([
+            'name'       => 'Singu',
+            'city_id'    => '2',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        //Sintgaing
+        DB::table('townships')->insert([
+            'name'       => 'Sintgaing',
+            'city_id'    => '2',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        //Tada-U
+        DB::table('townships')->insert([
+            'name'       => 'Tada-U',
+            'city_id'    => '2',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        //Taungtha
+        DB::table('townships')->insert([
+            'name'       => 'Taungtha',
+            'city_id'    => '2',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        //Thabeikkyin
+        DB::table('townships')->insert([
+            'name'       => 'Thabeikkyin',
+            'city_id'    => '2',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        //Thazi
+        DB::table('townships')->insert([
+            'name'       => 'Thazi',
+            'city_id'    => '2',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        //Wundwin
+        DB::table('townships')->insert([
+            'name'       => 'Wundwin',
+            'city_id'    => '2',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        //Yamethin
+        DB::table('townships')->insert([
+            'name'       => 'Yamethin',
+            'city_id'    => '2',
+            'created_at' => now(),
+            'updated_at' => now()
         ]);
 
 
