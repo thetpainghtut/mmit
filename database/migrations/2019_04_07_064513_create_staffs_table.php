@@ -15,7 +15,6 @@ class CreateStaffsTable extends Migration
     {
         Schema::create('staffs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
             $table->string('dob');
             $table->string('fathername');
             $table->string('nrc');
