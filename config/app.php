@@ -175,6 +175,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // For Spatie
+        Spatie\Permission\PermissionServiceProvider::class,
+
+        // For Passport
+        Laravel\Passport\PassportServiceProvider::class,
     ],
 
     /*
