@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Model\City;
+use App\Http\Resources\CityResource;
+
 
 class CityController extends Controller
 {
@@ -14,7 +17,8 @@ class CityController extends Controller
      */
     public function index()
     {
-        //
+        $cities = City::all();
+        return CityResource::collection($cities);
     }
 
     /**
