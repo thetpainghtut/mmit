@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Dimiss extends Model
 {
-    //
+    protected $fillable = [
+        'remark', 'interview_id'
+    ];
 }
