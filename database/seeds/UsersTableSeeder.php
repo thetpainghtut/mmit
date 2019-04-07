@@ -32,7 +32,7 @@ class UsersTableSeeder extends Seeder
         //Ei Mar Win
         DB::table('users')->insert([
             'name' 		 => 'Ei Mar Win',
-            'email'		 =>	'yinmiei@gmail.com',
+            'email'		 =>	'eimarwin@gmail.com',
             'password'	 => Hash::make('1234567'),
             'created_at' => now(),
 	        'updated_at' => now()
