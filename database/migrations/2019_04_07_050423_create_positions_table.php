@@ -16,6 +16,10 @@ class CreatePositionsTable extends Migration
         Schema::create('positions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+
+            //user
+            $table->unsignedBigInteger('user_id');
+
             $table->timestamps();
         });
     }

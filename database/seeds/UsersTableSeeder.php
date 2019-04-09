@@ -13,9 +13,18 @@ class UsersTableSeeder extends Seeder
     {
         //Yin Min Ei
         DB::table('users')->insert([
+            'name'       => 'Admin',
+            'email'      => 'admin@gmail.com',
+            'password'   => Hash::make('123456789'),
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        //Yin Min Ei
+        DB::table('users')->insert([
             'name' 		 => 'Yin Min Ei',
             'email'		 =>	'yinmiei@gmail.com',
-            'password'	 => Hash::make('1234567'),
+            'password'	 => Hash::make('123456789'),
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -24,7 +33,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'name' 		 => 'Aye Chan Khin',
             'email'		 =>	'ayechankhin@gmail.com',
-            'password'	 => Hash::make('1234567'),
+            'password'	 => Hash::make('123456789'),
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -33,7 +42,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'name' 		 => 'Ei Mar Win',
             'email'		 =>	'eimarwin@gmail.com',
-            'password'	 => Hash::make('1234567'),
+            'password'	 => Hash::make('123456789'),
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -42,7 +51,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'name' 		 => 'Htet Htet Wai',
             'email'		 =>	'htethtetwai@gmail.com',
-            'password'	 => Hash::make('1234567'),
+            'password'	 => Hash::make('123456789'),
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -51,7 +60,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'name' 		 => 'Naing Zaw',
             'email'		 =>	'naingzaw@gmail.com',
-            'password'	 => Hash::make('1234567'),
+            'password'	 => Hash::make('123456789'),
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -60,7 +69,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'name' 		 => 'Khin Mar Myint',
             'email'		 =>	'khinmarmyint@gmail.com',
-            'password'	 => Hash::make('1234567'),
+            'password'	 => Hash::make('123456789'),
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -69,7 +78,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'name' 		 => 'Thiri Tone',
             'email'		 =>	'thiritone@gmail.com',
-            'password'	 => Hash::make('1234567'),
+            'password'	 => Hash::make('123456789'),
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -78,7 +87,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'name' 		 => 'Khin Moet Moet Naing',
             'email'		 =>	'khinmoetmoetnaing@gmail.com',
-            'password'	 => Hash::make('1234567'),
+            'password'	 => Hash::make('123456789'),
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -87,7 +96,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'name' 		 => 'Daw Phyu Phyu Khaing Aye',
             'email'		 =>	'phyuphyukhaingaye@gmail.com',
-            'password'	 => Hash::make('1234567'),
+            'password'	 => Hash::make('123456789'),
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -96,7 +105,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'name' 		 => 'Daw Thuzar',
             'email'		 =>	'thuzar@gmail.com',
-            'password'	 => Hash::make('1234567'),
+            'password'	 => Hash::make('123456789'),
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -105,7 +114,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'name' 		 => 'Daw Pyae Phyo Khaing',
             'email'		 =>	'pyaephyokhaing@gmail.com',
-            'password'	 => Hash::make('1234567'),
+            'password'	 => Hash::make('123456789'),
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -114,7 +123,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'name' 		 => 'Daw July Oo',
             'email'		 =>	'julyoo@gmail.com',
-            'password'	 => Hash::make('1234567'),
+            'password'	 => Hash::make('123456789'),
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -123,7 +132,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'name' 		 => 'Daw Thi Dar',
             'email'		 =>	'thidar@gmail.com',
-            'password'	 => Hash::make('1234567'),
+            'password'	 => Hash::make('123456789'),
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -132,7 +141,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'name' 		 => 'Min Aung Hein',
             'email'		 =>	'minaunghein@gmail.com',
-            'password'	 => Hash::make('1234567'),
+            'password'	 => Hash::make('123456789'),
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -141,7 +150,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'name' 		 => 'Thet Paing Htut',
             'email'		 =>	'thetpainghtut@gmail.com',
-            'password'	 => Hash::make('1234567'),
+            'password'	 => Hash::make('123456789'),
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -150,7 +159,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'name' 		 => 'Ya Thaw Myat Noe',
             'email'		 =>	'yathawmyatnoe@gmail.com',
-            'password'	 => Hash::make('1234567'),
+            'password'	 => Hash::make('123456789'),
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -159,7 +168,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'name' 		 => 'Hein Min Htet',
             'email'		 =>	'heinminhtet@gmail.com',
-            'password'	 => Hash::make('1234567'),
+            'password'	 => Hash::make('123456789'),
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -168,7 +177,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'name' 		 => 'Chan Ei Hmwe',
             'email'		 =>	'chaneihmwe@gmail.com',
-            'password'	 => Hash::make('1234567'),
+            'password'	 => Hash::make('123456789'),
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -177,7 +186,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'name' 		 => 'Aye Lwin Soe',
             'email'		 =>	'ayelwinsoe@gmail.com',
-            'password'	 => Hash::make('1234567'),
+            'password'	 => Hash::make('123456789'),
             'created_at' => now(),
 	        'updated_at' => now()
         ]);

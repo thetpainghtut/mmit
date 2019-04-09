@@ -20,6 +20,9 @@ class CreateExpensesTable extends Migration
             $table->longText('description');
             $table->date('date');
 
+            //user
+            $table->unsignedBigInteger('user_id');
+
             $table->timestamps();
         });
     }

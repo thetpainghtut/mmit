@@ -23,7 +23,9 @@ class CreateStudentsTable extends Migration
 
             //inquire
             $table->unsignedBigInteger('inquire_id');
-            $table->foreign('inquire_id')->references('id')->on('inquires');
+
+            //user
+            $table->unsignedBigInteger('user_id');
 
             $table->timestamps();
         });

@@ -18,7 +18,11 @@ class CityController extends Controller
     public function index()
     {
         $cities = City::all();
-        return CityResource::collection($cities);
+        $cities =  CityResource::collection($cities);
+
+        return response()->json([
+            'cities' => $cities,
+        ],200);
     }
 
     /**
@@ -29,7 +33,21 @@ class CityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name'  => 'required',
+        ]);
+
+        $city = City::create([
+            'name'  =>  request('name'),
+            // 'user_id'    =>  Auth::user()->id
+        ]);
+
+        $city = new CityResource($city);
+
+        return response()->json([
+            'city'  =>  $city,
+            'message'   =>  'Successfully Added!'
+        ],200);
     }
 
     /**
@@ -52,7 +70,17 @@ class CityController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name'  =>  'required|max:255',
+        ]);
+        $city = City::find($id);
+
+        $city->name = request('name');
+        $city->save();
+
+        return response()->json([
+            'message'   =>  'City updated successfully!'
+        ],200);
     }
 
     /**
@@ -63,6 +91,11 @@ class CityController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $city = City::find($id);
+        $city->delete();
+
+        return response()->json([
+            'message'   =>  'City deleted successfully!'
+        ],200);
     }
 }

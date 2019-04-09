@@ -21,7 +21,9 @@ class CreateAttendancesTable extends Migration
 
             //student
             $table->unsignedBigInteger('student_id');
-            $table->foreign('student_id')->references('id')->on('students');
+
+            //user
+            $table->unsignedBigInteger('user_id');
 
             $table->timestamps();
         });

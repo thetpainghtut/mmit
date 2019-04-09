@@ -16,6 +16,7 @@ class CourseTableSeeder extends Seeder
             'name'		 => 'HR/ Admin/ Office Staff Training',
             'fees'		 =>	'140000',
             'location_id'=> '2',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -25,6 +26,7 @@ class CourseTableSeeder extends Seeder
             'name'		 => 'HR/ Admin/ Office Staff Training',
             'fees'		 =>	'140000',
             'location_id'=> '3',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -34,6 +36,7 @@ class CourseTableSeeder extends Seeder
             'name'		 => 'PHP Web Developer Bootcamp',
             'fees'		 =>	'250000',
             'location_id'=> '1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -43,6 +46,7 @@ class CourseTableSeeder extends Seeder
             'name'		 => 'iOS Application Development Training',
             'fees'		 =>	'200000',
             'location_id'=> '1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);

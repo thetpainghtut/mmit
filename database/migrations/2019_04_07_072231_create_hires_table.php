@@ -21,7 +21,10 @@ class CreateHiresTable extends Migration
 
             //interview
             $table->unsignedBigInteger('interview_id');
-            $table->foreign('interview_id')->references('id')->on('interviews');
+
+            //user
+            $table->unsignedBigInteger('user_id');
+
 
             $table->timestamps();
         });

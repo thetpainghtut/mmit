@@ -32,11 +32,12 @@ class CreateInquiresTable extends Migration
 
             //section
             $table->unsignedBigInteger('section_id');
-            $table->foreign('section_id')->references('id')->on('sections');
 
             //township
             $table->unsignedBigInteger('township_id');
-            $table->foreign('township_id')->references('id')->on('townships');
+
+            //user
+            $table->unsignedBigInteger('user_id');
 
             $table->timestamps();
         });

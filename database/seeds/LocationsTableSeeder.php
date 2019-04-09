@@ -15,6 +15,7 @@ class LocationsTableSeeder extends Seeder
         DB::table('locations')->insert([
             'name' 		 => 'တိုက္အမွတ္ (၁၆၉)၊ အခန္းနံပါတ္ 8/A၊ MTP ကြန္ဒို၊ လွည္းတန္း - အင္းစိန္လမ္းမၾကီး၊ ၉ ရပ္ကြက္၊ လိႈင္ျမိဳ႕နယ္၊။ ',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -23,6 +24,7 @@ class LocationsTableSeeder extends Seeder
         DB::table('locations')->insert([
             'name' 		 => 'တိုက္အမွတ္ (29 A/ 5A) ၊ No.1 Beauty Saloon အေပၚထပ္ ၅ လႊာ ၊ ခိုင္ေရႊ၀ါလမ္း လွည္းတန္း။',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -31,6 +33,7 @@ class LocationsTableSeeder extends Seeder
         DB::table('locations')->insert([
             'name' 		 => 'လမ္း ၄၀ ၊ ၇၀x ၇၁ ၾကား ၊ ၀ါၿမဲ Learning Center',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);

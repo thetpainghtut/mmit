@@ -21,11 +21,12 @@ class CreateInterviewsTable extends Migration
 
             //student
             $table->unsignedBigInteger('student_id');
-            $table->foreign('student_id')->references('id')->on('students');
 
             //jobareer
             $table->unsignedBigInteger('jobcareer_id');
-            $table->foreign('jobcareer_id')->references('id')->on('jobcareers');
+
+            //user
+            $table->unsignedBigInteger('user_id');
 
             $table->timestamps();
         });

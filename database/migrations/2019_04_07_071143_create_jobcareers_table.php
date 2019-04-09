@@ -22,11 +22,12 @@ class CreateJobcareersTable extends Migration
 
             //company
             $table->unsignedBigInteger('company_id');
-            $table->foreign('company_id')->references('id')->on('companies');
 
             //position
             $table->unsignedBigInteger('position_id');
-            $table->foreign('position_id')->references('id')->on('positions');
+
+            //user
+            $table->unsignedBigInteger('user_id');
 
 
             $table->timestamps();

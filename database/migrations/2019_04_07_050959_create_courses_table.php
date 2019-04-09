@@ -20,7 +20,10 @@ class CreateCoursesTable extends Migration
 
             //location
             $table->unsignedBigInteger('location_id');
-            $table->foreign('location_id')->references('id')->on('locations');
+
+            //user
+            $table->unsignedBigInteger('user_id');
+
 
             $table->timestamps();
         });

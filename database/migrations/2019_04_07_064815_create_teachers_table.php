@@ -18,11 +18,12 @@ class CreateTeachersTable extends Migration
 
             //staff
             $table->unsignedBigInteger('staff_id');
-            $table->foreign('staff_id')->references('id')->on('staffs');
 
             //course
             $table->unsignedBigInteger('course_id');
-            $table->foreign('course_id')->references('id')->on('courses');
+
+            //user
+            $table->unsignedBigInteger('user_id');
 
             $table->timestamps();
         });

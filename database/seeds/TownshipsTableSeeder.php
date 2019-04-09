@@ -15,6 +15,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Lanmadaw',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -23,6 +24,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Latha',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -31,6 +33,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Kyauktada',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -40,6 +43,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Pabedan',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -48,6 +52,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Pazundaung',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -56,6 +61,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Ahlone',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -64,6 +70,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Kyeemyindaing',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -72,6 +79,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Sanchaung',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -80,6 +88,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Bahan',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -89,6 +98,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Botahtaung',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -97,6 +107,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Mingalartaungnyunt',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -105,6 +116,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Tamwe',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -113,6 +125,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Yankin',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -121,6 +134,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Dagon',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -129,6 +143,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Dagon Myothit (East)',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -137,6 +152,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Dagon Myothit (North)',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -145,6 +161,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Dagon Myothit (South)',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -152,6 +169,7 @@ class TownshipsTableSeeder extends Seeder
         //Dagon Myothit (Seikkan)
         DB::table('townships')->insert([
             'name' 		 => 'Dagon Myothit (Seikkan)',
+            'user_id'    => '1',
             'city_id'	 =>	'1',
             'created_at' => now(),
 	        'updated_at' => now()
@@ -161,6 +179,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Kamaryut',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -169,6 +188,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Insein',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -177,6 +197,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Hlaing',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -186,6 +207,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Hlaingtharya',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -194,6 +216,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Mayangone',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -202,6 +225,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Mingaladon',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -210,6 +234,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'North Okkalapa',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -218,6 +243,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'South Okkalapa',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -226,6 +252,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Thingangyun',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -234,6 +261,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Thaketa',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -242,6 +270,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Thanlyin',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -250,6 +279,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Dala',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -258,6 +288,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Dawbon',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -266,6 +297,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Hmawbi',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -274,6 +306,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Hlegu',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -282,6 +315,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Htantabin',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -290,6 +324,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Kawhmu',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -298,6 +333,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Kayan',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -306,6 +342,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Kungyangon',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -314,6 +351,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Shwepyithar',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -322,6 +360,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Taikkyi',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -330,6 +369,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Thongwa',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -338,6 +378,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Twantay',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -346,6 +387,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Kyauktan',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -354,6 +396,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Seikgyikanaungto',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -362,6 +405,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Palae Myothit',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -370,6 +414,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Palae Myothit',
             'city_id'	 =>	'1',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -378,6 +423,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Aung Myay Thar Zan',
             'city_id'	 =>	'2',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -386,6 +432,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Chan Aye Thar Zan',
             'city_id'	 =>	'2',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -394,6 +441,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Chan Mya Thazi',
             'city_id'	 =>	'2',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -402,6 +450,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Chan Mya Thar Si',
             'city_id'	 =>	'2',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -410,6 +459,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Kyaukpadaung',
             'city_id'	 =>	'2',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -418,6 +468,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Kyaukse',
             'city_id'	 =>	'2',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -426,6 +477,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Maha Aungmye',
             'city_id'	 =>	'2',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -434,6 +486,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name' 		 => 'Mahlaing',
             'city_id'	 =>	'2',
+            'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -442,6 +495,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name'       => 'Meiktila',
             'city_id'    => '2',
+            'user_id'    => '1',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -450,6 +504,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name'       => 'Mogok',
             'city_id'    => '2',
+            'user_id'    => '1',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -458,6 +513,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name'       => 'Myingyan',
             'city_id'    => '2',
+            'user_id'    => '1',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -466,6 +522,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name'       => 'Myittha',
             'city_id'    => '2',
+            'user_id'    => '1',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -474,6 +531,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name'       => 'Natogyi',
             'city_id'    => '2',
+            'user_id'    => '1',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -482,6 +540,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name'       => 'Ngazun',
             'city_id'    => '2',
+            'user_id'    => '1',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -490,6 +549,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name'       => 'Nyaung-U',
             'city_id'    => '2',
+            'user_id'    => '1',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -498,6 +558,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name'       => 'Patheingyi',
             'city_id'    => '2',
+            'user_id'    => '1',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -506,6 +567,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name'       => 'Pyawbwe ',
             'city_id'    => '2',
+            'user_id'    => '1',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -514,6 +576,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name'       => 'Pyigyidagun ',
             'city_id'    => '2',
+            'user_id'    => '1',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -522,6 +585,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name'       => 'Pyinoolwin',
             'city_id'    => '2',
+            'user_id'    => '1',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -530,6 +594,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name'       => 'Singu',
             'city_id'    => '2',
+            'user_id'    => '1',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -538,6 +603,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name'       => 'Sintgaing',
             'city_id'    => '2',
+            'user_id'    => '1',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -546,6 +612,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name'       => 'Tada-U',
             'city_id'    => '2',
+            'user_id'    => '1',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -554,6 +621,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name'       => 'Taungtha',
             'city_id'    => '2',
+            'user_id'    => '1',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -562,6 +630,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name'       => 'Thabeikkyin',
             'city_id'    => '2',
+            'user_id'    => '1',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -570,6 +639,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name'       => 'Thazi',
             'city_id'    => '2',
+            'user_id'    => '1',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -578,6 +648,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name'       => 'Wundwin',
             'city_id'    => '2',
+            'user_id'    => '1',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -586,6 +657,7 @@ class TownshipsTableSeeder extends Seeder
         DB::table('townships')->insert([
             'name'       => 'Yamethin',
             'city_id'    => '2',
+            'user_id'    => '1',
             'created_at' => now(),
             'updated_at' => now()
         ]);

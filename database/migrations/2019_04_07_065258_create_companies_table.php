@@ -26,7 +26,9 @@ class CreateCompaniesTable extends Migration
 
             //township
             $table->unsignedBigInteger('township_id');
-            $table->foreign('township_id')->references('id')->on('townships');
+
+            //user
+            $table->unsignedBigInteger('user_id');
 
 
             $table->timestamps();

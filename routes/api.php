@@ -18,58 +18,62 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // City
-Route::resource('/city', 'Api\CityController');
+Route::group(['prefix' => 'setup', 'middleware' => 'auth:api'], function() {
+	
+	Route::resource('/city', 'Api\CityController');
 
-// Township
-Route::resource('/township', 'Api\TownshipController');
+});
 
-// Position
-Route::resource('/city', 'Api\PositionController');
+// // Township
+// Route::resource('/township', 'Api\TownshipController');
 
-// Location
-Route::resource('/city', 'Api\LocationController');
+// // Position
+// Route::resource('/position', 'Api\PositionController');
 
-// Expense
-Route::resource('/city', 'Api\ExpenseController');
+// // Location
+// Route::resource('/location', 'Api\LocationController');
 
-// Income
-Route::resource('/city', 'Api\IncomeController');
+// // Expense
+// Route::resource('/expense', 'Api\ExpenseController');
 
-// Course
-Route::resource('/city', 'Api\CourseController');
+// // Income
+// Route::resource('/income', 'Api\IncomeController');
 
-// Duration
-Route::resource('/city', 'Api\DurationController');
+// // Course
+// Route::resource('/course', 'Api\CourseController');
 
-// Staff
-Route::resource('/city', 'Api\StaffController');
+// // Duration
+// Route::resource('/duration', 'Api\DurationController');
 
-// Teacher
-Route::resource('/city', 'Api\TeacherController');
+// // Staff
+// Route::resource('/staff', 'Api\StaffController');
 
-// Section
-Route::resource('/city', 'Api\SectionController');
+// // Teacher
+// Route::resource('/teacher', 'Api\TeacherController');
 
-// Company
-Route::resource('/city', 'Api\CompanyController');
+// // Section
+// Route::resource('/section', 'Api\SectionController');
 
-// Inquire
-Route::resource('/city', 'Api\InquireController');
+// // Company
+// Route::resource('/company', 'Api\CompanyController');
 
-// Student
-Route::resource('/city', 'Api\StudentController');
+// // Inquire
+// Route::resource('/inquire', 'Api\InquireController');
 
-// Jobcareer
-Route::resource('/city', 'Api\JobcareerController');
+// // Student
+// Route::resource('/student', 'Api\StudentController');
 
-// Interview
-Route::resource('/city', 'Api\InterviewController');
+// // Jobcareer
+// Route::resource('/jobcareer', 'Api\JobcareerController');
 
-// Hire
-Route::resource('/city', 'Api\HireController');
+// // Interview
+// Route::resource('/interview', 'Api\InterviewController');
 
-// Dismiss
-Route::resource('/city', 'Api\DismissController');
+// // Hire
+// Route::resource('/hire', 'Api\HireController');
 
-// Attendance
-Route::resource('/city', 'Api\AttendanceController');
+// // Dismiss
+// Route::resource('/dismiss', 'Api\DismissController');
+
+// // Attendance
+// Route::resource('/attendance', 'Api\AttendanceController');

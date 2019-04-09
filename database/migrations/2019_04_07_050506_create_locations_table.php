@@ -19,8 +19,10 @@ class CreateLocationsTable extends Migration
 
             //city
             $table->unsignedBigInteger('city_id');
-            $table->foreign('city_id')->references('id')->on('cities');
-            
+
+            //user
+            $table->unsignedBigInteger('user_id');
+
             $table->timestamps();
         });
     }

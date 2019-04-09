@@ -23,11 +23,12 @@ class CreateSectionsTable extends Migration
 
             //duration
             $table->unsignedBigInteger('duration_id');
-            $table->foreign('duration_id')->references('id')->on('durations');
 
             //teacher
             $table->unsignedBigInteger('teacher_id');
-            $table->foreign('teacher_id')->references('id')->on('teachers');
+
+            //user
+            $table->unsignedBigInteger('user_id');
 
             $table->timestamps();
         });

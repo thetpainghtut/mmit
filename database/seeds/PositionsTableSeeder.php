@@ -14,6 +14,7 @@ class PositionsTableSeeder extends Seeder
         //HR
         DB::table('positions')->insert([
             'name' => 'HR',
+            'user_id'   =>  '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -21,6 +22,7 @@ class PositionsTableSeeder extends Seeder
         //Admin
         DB::table('positions')->insert([
             'name' => 'Admin',
+            'user_id'   =>  '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -28,6 +30,7 @@ class PositionsTableSeeder extends Seeder
         //Office Staff
         DB::table('positions')->insert([
             'name' => 'Office Staff',
+            'user_id'   =>  '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -35,6 +38,7 @@ class PositionsTableSeeder extends Seeder
         //Sale Admin
         DB::table('positions')->insert([
             'name' => 'Sale Admin',
+            'user_id'   =>  '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -42,6 +46,7 @@ class PositionsTableSeeder extends Seeder
         //Resception
         DB::table('positions')->insert([
             'name' => 'Resception',
+            'user_id'   =>  '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
@@ -49,6 +54,7 @@ class PositionsTableSeeder extends Seeder
         //Data Entry
         DB::table('positions')->insert([
             'name' => 'Data Entry',
+            'user_id'   =>  '1',
             'created_at' => now(),
 	        'updated_at' => now()
         ]);
