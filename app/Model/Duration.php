@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Duration extends Model
 {
     protected $fillable = [
-        'time','days','during'
+        'time','days','during', 'user_id'
     ];}
