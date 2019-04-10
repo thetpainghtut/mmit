@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\City;
-use App\Http\Resources\CityResource;
+use App\User;
 
+use App\Http\Resources\CityResource;
+use Auth;
 
 class CityController extends Controller
 {
@@ -39,7 +41,7 @@ class CityController extends Controller
 
         $city = City::create([
             'name'  =>  request('name'),
-            // 'user_id'    =>  Auth::user()->id
+            'user_id'    =>  Auth::user()->id,
         ]);
 
         $city = new CityResource($city);
@@ -76,6 +78,7 @@ class CityController extends Controller
         $city = City::find($id);
 
         $city->name = request('name');
+        $city->user_id=  Auth::user()->id;
         $city->save();
 
         return response()->json([
