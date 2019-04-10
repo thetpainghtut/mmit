@@ -1860,6 +1860,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -37044,53 +37059,49 @@ var render = function() {
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "panel panel-default" }, [
-          _c("div", { staticClass: "panel-heading" }, [
-            _c("h3", [_vm._v("Dashboard ")]),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(" "),
+        _c("h1", { staticClass: "h3 mb-2 text-gray-800" }, [
+          _vm._v(" City List ")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card shadow mb-4" }, [
+          _c("div", { staticClass: "card-header py-3" }, [
             _c(
               "button",
               {
-                staticClass: "btn btn-success ",
-                staticStyle: { padding: "5px" },
+                staticClass: "btn btn-success btn-lg float-right ",
                 on: {
                   click: function($event) {
                     return _vm.initAddCity()
                   }
                 }
               },
-              [
-                _vm._v(
-                  "\n                    Add New City\n                    "
-                )
-              ]
+              [_vm._v("\n            Add New City\n          ")]
             )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "panel-body table-responsive" }, [
-            _vm.cities.length > 0
-              ? _c(
-                  "table",
-                  { staticClass: "table table-bordered table-striped" },
-                  [
-                    _c(
-                      "tbody",
-                      [
-                        _vm._m(0),
-                        _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "table-responsive" }, [
+              _vm.cities.length > 0
+                ? _c(
+                    "table",
+                    {
+                      staticClass: "table table-bordered",
+                      attrs: {
+                        id: "dataTable",
+                        width: "100%",
+                        cellspacing: "0"
+                      }
+                    },
+                    [
+                      _vm._m(0),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
                         _vm._l(_vm.cities, function(city, index) {
                           return _c("tr", [
-                            _c("td", [_vm._v(_vm._s(index + 1))]),
+                            _c("td", [_vm._v(" " + _vm._s(index + 1) + " ")]),
                             _vm._v(" "),
-                            _c("td", [
-                              _vm._v(
-                                "\n                                  " +
-                                  _vm._s(city.name) +
-                                  "\n                              "
-                              )
-                            ]),
+                            _c("td", [_vm._v(" " + _vm._s(city.name) + " ")]),
                             _vm._v(" "),
                             _c("td", [
                               _c(
@@ -37122,13 +37133,13 @@ var render = function() {
                               )
                             ])
                           ])
-                        })
-                      ],
-                      2
-                    )
-                  ]
-                )
-              : _vm._e()
+                        }),
+                        0
+                      )
+                    ]
+                  )
+                : _vm._e()
+            ])
           ])
         ])
       ])
@@ -37305,23 +37316,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("th", [
-        _vm._v(
-          "\n                                  No.\n                              "
-        )
-      ]),
-      _vm._v(" "),
-      _c("th", [
-        _vm._v(
-          "\n                                  Name\n                              "
-        )
-      ]),
-      _vm._v(" "),
-      _c("th", [
-        _vm._v(
-          "\n                                  Action\n                              "
-        )
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v(" No ")]),
+        _vm._v(" "),
+        _c("th", [_vm._v(" Name ")]),
+        _vm._v(" "),
+        _c("th", [_vm._v(" Action ")])
       ])
     ])
   },
