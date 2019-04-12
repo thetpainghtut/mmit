@@ -48,19 +48,18 @@ class TownshipController extends Controller
             'name'  => 'required',
         ]);
 
-        Township::create([
-            'name'       =>  request('name'),
-            'city_id'    =>  request('city_id'),
-            'user_id'    =>  Auth::user()->id,
+
+        $name = request('name');
+        $cityid = request('city_id');
+        $userid = Auth::user()->id;
+
+        $township = Township::create([
+            'name'       =>  $name,
+            'city_id'    =>  $cityid,
+            'user_id'    =>  $userid,
         ]);
 
-        $townships =  DB::table('townships')
-            ->join('cities', 'cities.id', '=', 'townships.city_id')
-            ->join('users', 'users.id', '=', 'townships.user_id')
-            ->select('townships.*', 'cities.name as cityname', 'users.name as username')
-            ->get();
-
-        $township =  TownshipResource::collection($townships);
+        $township = new TownshipResource($township);
 
         return response()->json([
             'township'  =>  $township,
@@ -110,6 +109,11 @@ class TownshipController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $township = Township::find($id);
+        $township->delete();
+
+        return response()->json([
+            'message'   =>  'Township deleted successfully!'
+        ],200);
     }
 }
