@@ -18,3 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// City
+Route::get('/city', 'HomeController@city')->name('city');
+
+// Township
+Route::get('/township', 'HomeController@township')->name('township');
+
+

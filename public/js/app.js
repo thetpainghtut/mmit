@@ -1991,6 +1991,243 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Township.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Township.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      township: {
+        name: ''
+      },
+      cities: [],
+      city_id: '',
+      errors: [],
+      townships: [],
+      update_township: {}
+    };
+  },
+  mounted: function mounted() {
+    this.readTownships();
+    this.readCities();
+  },
+  methods: {
+    deletetownship: function deletetownship(index) {
+      var _this = this;
+
+      var conf = confirm("Do you ready want to delete this township?");
+
+      if (conf === true) {
+        axios["delete"]('/api/setup/township/' + this.townships[index].id).then(function (response) {
+          _this.townships.splice(index, 1);
+        })["catch"](function (error) {});
+      }
+    },
+    initAddTownship: function initAddTownship() {
+      $("#add_township_model").modal("show");
+    },
+    createTownship: function createTownship() {
+      var _this2 = this;
+
+      axios.post('/api/setup/township', {
+        name: this.township.name,
+        city_id: this.city_id
+      }).then(function (response) {
+        _this2.reset();
+
+        _this2.townships.push(response.data.township);
+
+        $("#add_township_model").modal("hide");
+      })["catch"](function (error) {
+        _this2.errors = [];
+
+        if (error.response.data.errors && error.response.data.errors.name) {
+          _this2.errors.push(error.response.data.errors.name[0]);
+        }
+      });
+    },
+    reset: function reset() {
+      this.township.name = '';
+    },
+    readTownships: function readTownships() {
+      var _this3 = this;
+
+      axios.get('/api/setup/township').then(function (response) {
+        _this3.townships = response.data.townships;
+      });
+    },
+    readCities: function readCities() {
+      var _this4 = this;
+
+      axios.get('/api/setup/city').then(function (response) {
+        _this4.cities = response.data.cities;
+      });
+    },
+    initUpdate: function initUpdate(index) {
+      this.errors = [];
+      $("#update_township_model").modal("show");
+      this.update_township = this.townships[index];
+    },
+    updateTownship: function updateTownship() {
+      var _this5 = this;
+
+      axios.patch('/api/setup/township/' + this.update_township.id, {
+        name: this.update_township.name,
+        city_id: this.update_township.tsp_cityid
+      }).then(function (response) {
+        $("#update_township_model").modal("hide");
+      })["catch"](function (error) {
+        _this5.errors = [];
+
+        if (error.response.data.errors.name) {
+          _this5.errors.push(error.response.data.errors.name[0]);
+        }
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/bootstrap/dist/js/bootstrap.js":
 /*!*****************************************************!*\
   !*** ./node_modules/bootstrap/dist/js/bootstrap.js ***!
@@ -37422,6 +37659,451 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Township.vue?vue&type=template&id=4a912a39&":
+/*!***********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Township.vue?vue&type=template&id=4a912a39& ***!
+  \***********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("h1", { staticClass: "h3 mb-2 text-gray-800" }, [
+          _vm._v(" Township List ")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card shadow mb-4" }, [
+          _c("div", { staticClass: "card-header py-3" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-success btn-lg float-right ",
+                on: {
+                  click: function($event) {
+                    return _vm.initAddTownship()
+                  }
+                }
+              },
+              [_vm._v("\n            Add New Township\n          ")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "table-responsive" }, [
+              _vm.townships.length > 0
+                ? _c(
+                    "table",
+                    {
+                      staticClass: "table table-bordered",
+                      attrs: {
+                        id: "dataTable",
+                        width: "100%",
+                        cellspacing: "0"
+                      }
+                    },
+                    [
+                      _vm._m(0),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
+                        _vm._l(_vm.townships, function(township, index) {
+                          return _c("tr", [
+                            _c("td", [_vm._v(" " + _vm._s(index + 1) + " ")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(" " + _vm._s(township.name) + " ")
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(" " + _vm._s(township.cityname) + " ")
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-success btn-xs",
+                                  staticStyle: { padding: "8px" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.initUpdate(index)
+                                    }
+                                  }
+                                },
+                                [_vm._v("Edit")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-danger btn-xs",
+                                  staticStyle: { padding: "8px" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.deletetownship(index)
+                                    }
+                                  }
+                                },
+                                [_vm._v("Delete")]
+                              )
+                            ])
+                          ])
+                        }),
+                        0
+                      )
+                    ]
+                  )
+                : _vm._e()
+            ])
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: { tabindex: "-1", role: "dialog", id: "add_township_model" }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _vm.errors.length > 0
+                  ? _c("div", { staticClass: "alert alert-danger" }, [
+                      _c(
+                        "ul",
+                        _vm._l(_vm.errors, function(error) {
+                          return _c("li", [_vm._v(_vm._s(error))])
+                        }),
+                        0
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "names" } }, [_vm._v("Name:")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.township.name,
+                        expression: "township.name"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      name: "name",
+                      id: "name",
+                      placeholder: "township Name"
+                    },
+                    domProps: { value: _vm.township.name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.township, "name", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "names" } }, [_vm._v(" City :")]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.city_id,
+                          expression: "city_id"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { name: "city_id", id: "cityid" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.city_id = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { disabled: "", value: "" } }, [
+                        _vm._v("Please select one")
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.cities, function(city, index) {
+                        return _c("option", { domProps: { value: city.id } }, [
+                          _vm._v(" " + _vm._s(city.name) + "  ")
+                        ])
+                      })
+                    ],
+                    2
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-default",
+                    attrs: { type: "button", "data-dismiss": "modal" }
+                  },
+                  [_vm._v("Close")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { type: "button" },
+                    on: { click: _vm.createTownship }
+                  },
+                  [_vm._v("Submit")]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: { tabindex: "-1", role: "dialog", id: "update_township_model" }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(2),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _vm.errors.length > 0
+                  ? _c("div", { staticClass: "alert alert-danger" }, [
+                      _c(
+                        "ul",
+                        _vm._l(_vm.errors, function(error) {
+                          return _c("li", [_vm._v(_vm._s(error))])
+                        }),
+                        0
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Name:")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.update_township.name,
+                        expression: "update_township.name"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", placeholder: "township Name" },
+                    domProps: { value: _vm.update_township.name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.update_township,
+                          "name",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "names" } }, [_vm._v(" City :")]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.update_township.tsp_cityid,
+                          expression: "update_township.tsp_cityid"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { name: "city_id", id: "cityid" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.update_township,
+                            "tsp_cityid",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
+                    },
+                    _vm._l(_vm.cities, function(city, index) {
+                      return _c(
+                        "option",
+                        {
+                          domProps: {
+                            value: city.id,
+                            selected: city.id == _vm.update_township.tsp_cityid
+                          }
+                        },
+                        [_vm._v(" " + _vm._s(city.name) + "  ")]
+                      )
+                    }),
+                    0
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-default",
+                    attrs: { type: "button", "data-dismiss": "modal" }
+                  },
+                  [_vm._v("Close")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { type: "button" },
+                    on: { click: _vm.updateTownship }
+                  },
+                  [_vm._v("Submit")]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v(" No ")]),
+        _vm._v(" "),
+        _c("th", [_vm._v(" Township ")]),
+        _vm._v(" "),
+        _c("th", [_vm._v(" City ")]),
+        _vm._v(" "),
+        _c("th", [_vm._v(" Action ")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h4", { staticClass: "modal-title" }, [_vm._v("Add New township")]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h4", { staticClass: "modal-title" }, [_vm._v("Update township")]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js":
 /*!********************************************************************!*\
   !*** ./node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
@@ -51160,6 +51842,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
 Vue.component('city', __webpack_require__(/*! ./components/City.vue */ "./resources/js/components/City.vue")["default"]);
+Vue.component('township', __webpack_require__(/*! ./components/Township.vue */ "./resources/js/components/Township.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -51371,6 +52054,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/Township.vue":
+/*!**********************************************!*\
+  !*** ./resources/js/components/Township.vue ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Township_vue_vue_type_template_id_4a912a39___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Township.vue?vue&type=template&id=4a912a39& */ "./resources/js/components/Township.vue?vue&type=template&id=4a912a39&");
+/* harmony import */ var _Township_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Township.vue?vue&type=script&lang=js& */ "./resources/js/components/Township.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Township_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Township_vue_vue_type_template_id_4a912a39___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Township_vue_vue_type_template_id_4a912a39___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Township.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Township.vue?vue&type=script&lang=js&":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/Township.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Township_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Township.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Township.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Township_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Township.vue?vue&type=template&id=4a912a39&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/Township.vue?vue&type=template&id=4a912a39& ***!
+  \*****************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Township_vue_vue_type_template_id_4a912a39___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Township.vue?vue&type=template&id=4a912a39& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Township.vue?vue&type=template&id=4a912a39&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Township_vue_vue_type_template_id_4a912a39___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Township_vue_vue_type_template_id_4a912a39___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
@@ -51389,8 +52141,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\xampp\htdocs\mic-trainging-one\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\xampp\htdocs\mic-trainging-one\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/XAMPP/xamppfiles/htdocs/mic-trainging-one/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Applications/XAMPP/xamppfiles/htdocs/mic-trainging-one/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ }),

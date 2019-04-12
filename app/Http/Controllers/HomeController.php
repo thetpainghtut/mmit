@@ -25,4 +25,14 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function city()
+    {
+        return view('city');
+    }
+
+    public function township()
+    {
+        return view('township');
+    }
 }

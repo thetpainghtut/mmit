@@ -10,4 +10,9 @@ class Township extends Model
         'name','city_id', 'user_id'
     ];
 
+    public function cities()
+    {
+    	return $this->belongsTo('App\Model\City');
+    }
+
 }
