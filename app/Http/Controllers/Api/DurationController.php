@@ -1,17 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Model\Duration;
+use App\Model\Course;
+use App\User;
+use App\Http\Resources\DurationResource;
+use Auth;
+use Illuminate\Support\Facades\DB;
 
-class Duration_Controller extends Controller
+class DurationController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -20,18 +21,18 @@ class Duration_Controller extends Controller
     public function index()
     {
         //
-        return view('duration');
+        $courses = Course::all();
+        $durations =  DB::table('durations')
+            ->join('courses', 'courses.id', '=', 'durations.course_id')
+            ->join('users', 'users.id', '=', 'durations.user_id')
+            ->select('durations.*', 'courses.name as coursename', 'users.name as username')
+            ->get();
 
-    }
+        $durations =  DurationResource::collection($durations);
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return response()->json([
+            'durations' => $durations,
+        ],200);
     }
 
     /**
@@ -43,6 +44,28 @@ class Duration_Controller extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+            'time'  =>  'required',
+            'days'  =>  'required',
+            'during'  =>  'required',
+            'course_id'  =>  'required',
+        ]);
+
+        $duration = Duration::create([
+            'time'  =>  request('time'),
+            'days'  =>  request('days'),
+            'during'  =>  request('during'),
+
+            'course_id'  =>  request('course_id'),
+            'user_id'    =>  Auth::user()->id,
+        ]);
+
+        $duration = new DurationResource($duration);
+
+        return response()->json([
+            'duration'  =>  $duration,
+            'message'   =>  'Successfully Added!'
+        ],200);
     }
 
     /**
@@ -57,17 +80,6 @@ class Duration_Controller extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -77,6 +89,28 @@ class Duration_Controller extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request, [
+            'time'  =>  'required',
+            'days'  =>  'required',
+            'during'  =>  'required',
+            'course_id'  =>  'required',
+
+        ]);
+        $duration = Duration::find($id);
+
+        $duration->time = request('time');
+        $duration->days = request('days');
+        $duration->during = request('during');
+
+        
+        $duration->course_id = request('course_id');
+
+        $duration->user_id=  '1';
+        $duration->save();
+
+        return response()->json([
+            'message'   =>  'Duration updated successfully!'
+        ],200);
     }
 
     /**
@@ -88,5 +122,11 @@ class Duration_Controller extends Controller
     public function destroy($id)
     {
         //
+        $duration = Duration::find($id);
+        $duration->delete();
+
+        return response()->json([
+            'message'   =>  'Duration deleted successfully!'
+        ],200);
     }
 }
