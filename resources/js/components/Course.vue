@@ -21,6 +21,9 @@
                   <tr>
                     <th> No </th>
                     <th> Name </th>
+                    <th> Fees </th>
+                    <th> Location </th>
+                    <th> User Name </th>
                     <th> Action </th>
                   </tr>
                 </thead>
@@ -28,6 +31,10 @@
                   <tr v-for="(course, index) in courses">
                     <td> {{ index + 1 }} </td>
                     <td> {{ course.name }} </td>
+                    <td> {{ course.fees }} </td>
+                    <td> {{ course.location.name }} </td>
+                    <td> {{ course.username }} </td>
+
                     <td> 
                       <button @click="initUpdate(index)" class="btn btn-success btn-xs" style="padding:8px">Edit</button>
                       
@@ -219,7 +226,7 @@
                axios.patch('api/setup/course/' + this.update_course.id, {
                    name: this.update_course.name,
                    fees: this.update_course.fees,
-                   location: this.update_course.location_id,
+                   location: this.update_course.locationid,
 
                })
                    .then(response => {
