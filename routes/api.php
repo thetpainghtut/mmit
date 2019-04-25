@@ -17,7 +17,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-<<<<<<< HEAD
 Route::group(['prefix' => 'setup', 'middleware' => 'auth:api'], function() {
 	Route::resource('/city', 'Api\CityController');
 	Route::resource('/teacher', 'Api\TeacherController');
@@ -30,7 +29,6 @@ Route::group(['prefix' => 'setup', 'middleware' => 'auth:api'], function() {
 
 // Township
 Route::resource('/township', 'Api\TownshipController');
-=======
 
 Route::group(['prefix' => 'setup', 'middleware' => 'auth:api'], function() {
 	// City
@@ -42,7 +40,6 @@ Route::group(['prefix' => 'setup', 'middleware' => 'auth:api'], function() {
 
 });
 
->>>>>>> 6b3fbdffa8c2fad432e8958022288c97a0649c92
 
 // Position
 Route::resource('/position', 'Api\PositionController');
