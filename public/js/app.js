@@ -2133,6 +2133,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2212,9 +2214,11 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.patch('/api/setup/township/' + this.update_township.id, {
         name: this.update_township.name,
-        city_id: this.update_township.tsp_cityid
+        city_id: this.update_township.city_id
       }).then(function (response) {
         $("#update_township_model").modal("hide");
+
+        _this5.readTownships();
       })["catch"](function (error) {
         _this5.errors = [];
 
@@ -37724,7 +37728,7 @@ var render = function() {
                             ]),
                             _vm._v(" "),
                             _c("td", [
-                              _vm._v(" " + _vm._s(township.cityname) + " ")
+                              _vm._v(" " + _vm._s(township.city.name) + " ")
                             ]),
                             _vm._v(" "),
                             _c("td", [
@@ -37968,8 +37972,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.update_township.tsp_cityid,
-                          expression: "update_township.tsp_cityid"
+                          value: _vm.update_township.city_id,
+                          expression: "update_township.city_id"
                         }
                       ],
                       staticClass: "form-control",
@@ -37986,7 +37990,7 @@ var render = function() {
                             })
                           _vm.$set(
                             _vm.update_township,
-                            "tsp_cityid",
+                            "city_id",
                             $event.target.multiple
                               ? $$selectedVal
                               : $$selectedVal[0]
@@ -38000,7 +38004,7 @@ var render = function() {
                         {
                           domProps: {
                             value: city.id,
-                            selected: city.id == _vm.update_township.tsp_cityid
+                            selected: city.id == _vm.update_township.city_id
                           }
                         },
                         [_vm._v(" " + _vm._s(city.name) + "  ")]

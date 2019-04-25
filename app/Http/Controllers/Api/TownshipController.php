@@ -22,12 +22,7 @@ class TownshipController extends Controller
      */
     public function index()
     {
-        $cities = City::all();
-        $townships =  DB::table('townships')
-            ->join('cities', 'cities.id', '=', 'townships.city_id')
-            ->join('users', 'users.id', '=', 'townships.user_id')
-            ->select('townships.*', 'cities.name as cityname', 'users.name as username')
-            ->get();
+        $townships =  Township::all();
 
         $townships =  TownshipResource::collection($townships);
 
@@ -94,9 +89,10 @@ class TownshipController extends Controller
         $township->name = request('name');
         $township->city_id = request('city_id');
         $township->user_id = Auth::user()->id;
-        $township->save();
+        $township->save();        
 
         return response()->json([
+            'township'  =>  $township,
             'message'   =>  'City updated successfully!'
         ],200);
     }
