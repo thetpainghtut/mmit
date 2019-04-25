@@ -22,11 +22,15 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('city', require('./components/City.vue').default);
-Vue.component('course', require('./components/Course.vue').default); // HMH
-Vue.component('location', require('./components/Location.vue').default); // HMH
-Vue.component('duration', require('./components/Duration.vue').default); // HMH
-Vue.component('township', require('./components/Township.vue').default); // YTMN
+<<<<<<< HEAD
+Vue.component('course', require('./components/Course.vue').default);
+Vue.component('location', require('./components/Location.vue').default);
+Vue.component('teacher', require('./components/Teacher.vue').default);
+Vue.component('staff', require('./components/Staff.vue').default);
+=======
+Vue.component('township', require('./components/Township.vue').default);
 
+>>>>>>> 6b3fbdffa8c2fad432e8958022288c97a0649c92
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

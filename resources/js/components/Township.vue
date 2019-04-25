@@ -28,13 +28,11 @@
                   </tr>
                 </thead>
                 <tbody>
-
                   <tr v-for="(township, index) in townships">
-
-
+                    
                     <td> {{ index + 1 }} </td>
                     <td> {{ township.name }} </td>
-                    <td> {{ township.city.name }} </td>
+                    <td> {{ township.cityname }} </td>
 
                     <td> 
                       <button @click="initUpdate(index)" class="btn btn-success btn-xs" style="padding:8px">Edit</button>
@@ -114,9 +112,9 @@
 
             <div class="form-group">
               <label for="names"> City :</label>
-                <select class="form-control"  name="city_id" v-model="update_township.city_id" id="cityid">
+                <select class="form-control"  name="city_id" v-model="update_township.tsp_cityid" id="cityid">
                   
-                  <option v-for="(city, index) in cities" :value="city.id" :selected="city.id == update_township.city_id"> {{ city.name }}  </option>
+                  <option v-for="(city, index) in cities" :value="city.id" :selected="city.id == update_township.tsp_cityid"> {{ city.name }}  </option>
                 </select>
             </div>
             
@@ -218,11 +216,10 @@
            {
                axios.patch('/api/setup/township/' + this.update_township.id, {
                    name: this.update_township.name,
-                   city_id : this.update_township.city_id,
+                   city_id : this.update_township.tsp_cityid,
                })
                    .then(response => {
                        $("#update_township_model").modal("hide");
-                       this.readTownships();
                    })
                    .catch(error => {
                        this.errors = [];

@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    <duration></duration>
+    <staff> </staff>
 @endsection

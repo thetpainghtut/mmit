@@ -5,12 +5,11 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Location;
-use App\Model\City;
-use App\User;
 use App\Http\Resources\LocationResource;
 use Auth;
+use App\User;
+use App\Model\City;
 use Illuminate\Support\Facades\DB;
-
 
 
 class LocationController extends Controller
@@ -22,15 +21,13 @@ class LocationController extends Controller
      */
     public function index()
     {
-       
-
+        //
         $cities = City::all();
-        $locations =  DB::table('locations')
+       $locations =  DB::table('locations')
             ->join('cities', 'cities.id', '=', 'locations.city_id')
             ->join('users', 'users.id', '=', 'locations.user_id')
             ->select('locations.*', 'cities.name as cityname', 'users.name as username')
             ->get();
-
         $locations =  LocationResource::collection($locations);
 
         return response()->json([
@@ -47,14 +44,19 @@ class LocationController extends Controller
     public function store(Request $request)
     {
         //
-        $this->validate($request, [
+         $this->validate($request, [
             'name'  => 'required',
         ]);
 
+
+        $name = request('name');
+        $cityid = request('city_id');
+        $userid = Auth::user()->id;
+
         $location = Location::create([
-            'name'  =>  request('name'),
-            'city_id'  =>  request('city_id'),
-            'user_id'    =>  Auth::user()->id,
+            'name'       =>  $name,
+            'city_id'    =>  $cityid,
+            'user_id'    =>  $userid,
         ]);
 
         $location = new LocationResource($location);
@@ -93,12 +95,11 @@ class LocationController extends Controller
 
         $location->name = request('name');
         $location->city_id = request('city_id');
-
-        $location->user_id=  Auth::user()->id;
+        $location->user_id = Auth::user()->id;
         $location->save();
 
         return response()->json([
-            'message'   =>  'City updated successfully!'
+            'message'   =>  'Location updated successfully!'
         ],200);
     }
 
@@ -111,5 +112,11 @@ class LocationController extends Controller
     public function destroy($id)
     {
         //
+        $location = Location::find($id);
+        $location->delete();
+
+        return response()->json([
+            'message'   =>  'Location deleted successfully!'
+        ],200);
     }
 }

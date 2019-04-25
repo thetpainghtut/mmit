@@ -4,14 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class Location_Controller extends Controller
+class StaffController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    //
+     public function __construct()
     {
         $this->middleware('auth');
     }
@@ -23,6 +19,6 @@ class Location_Controller extends Controller
      */
     public function index()
     {
-        return view('location');
+        return view('staff');
     }
 }
