@@ -19,10 +19,18 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+<<<<<<< HEAD
 Route::get('/course', 'Course_Controller@index')->name('course');
 
 Route::get('/location', 'Location_Controller@index')->name('location');
 
 Route::get('/duration', 'Duration_Controller@index')->name('duration');
+=======
+// City
+Route::get('/city', 'HomeController@city')->name('city');
+
+// Township
+Route::get('/township', 'HomeController@township')->name('township');
+>>>>>>> 6b3fbdffa8c2fad432e8958022288c97a0649c92
 
 

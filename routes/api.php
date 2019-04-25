@@ -17,16 +17,18 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// City
+
 Route::group(['prefix' => 'setup', 'middleware' => 'auth:api'], function() {
-	
+	// City
 	Route::resource('/city', 'Api\CityController');
+	
+	// Township
+	Route::resource('/township', 'Api\TownshipController');
+
 
 
 });
 
-// Township
-Route::resource('/township', 'Api\TownshipController');
 
 // Position
 Route::resource('/position', 'Api\PositionController');

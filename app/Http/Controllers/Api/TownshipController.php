@@ -4,6 +4,14 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Model\Township;
+use App\Model\City;
+use App\User;
+
+use App\Http\Resources\TownshipResource;
+use Auth;
+
+use Illuminate\Support\Facades\DB;
 
 class TownshipController extends Controller
 {
@@ -14,7 +22,18 @@ class TownshipController extends Controller
      */
     public function index()
     {
-        //
+        $cities = City::all();
+        $townships =  DB::table('townships')
+            ->join('cities', 'cities.id', '=', 'townships.city_id')
+            ->join('users', 'users.id', '=', 'townships.user_id')
+            ->select('townships.*', 'cities.name as cityname', 'users.name as username')
+            ->get();
+
+        $townships =  TownshipResource::collection($townships);
+
+        return response()->json([
+            'townships' => $townships,
+        ],200);
     }
 
     /**
@@ -25,7 +44,27 @@ class TownshipController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name'  => 'required',
+        ]);
+
+
+        $name = request('name');
+        $cityid = request('city_id');
+        $userid = Auth::user()->id;
+
+        $township = Township::create([
+            'name'       =>  $name,
+            'city_id'    =>  $cityid,
+            'user_id'    =>  $userid,
+        ]);
+
+        $township = new TownshipResource($township);
+
+        return response()->json([
+            'township'  =>  $township,
+            'message'   =>  'Successfully Added!'
+        ],200);
     }
 
     /**
@@ -36,7 +75,6 @@ class TownshipController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -48,7 +86,19 @@ class TownshipController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name'  =>  'required|max:255',
+        ]);
+        $township = Township::find($id);
+
+        $township->name = request('name');
+        $township->city_id = request('city_id');
+        $township->user_id = Auth::user()->id;
+        $township->save();
+
+        return response()->json([
+            'message'   =>  'City updated successfully!'
+        ],200);
     }
 
     /**
@@ -59,6 +109,11 @@ class TownshipController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $township = Township::find($id);
+        $township->delete();
+
+        return response()->json([
+            'message'   =>  'Township deleted successfully!'
+        ],200);
     }
 }
