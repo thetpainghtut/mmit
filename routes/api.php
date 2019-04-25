@@ -17,6 +17,20 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+<<<<<<< HEAD
+Route::group(['prefix' => 'setup', 'middleware' => 'auth:api'], function() {
+	Route::resource('/city', 'Api\CityController');
+	Route::resource('/teacher', 'Api\TeacherController');
+	Route::resource('/staff', 'Api\StaffController');
+	Route::resource('/location', 'Api\LocationController');
+	Route::resource('/course', 'Api\CourseController');
+
+});
+
+
+// Township
+Route::resource('/township', 'Api\TownshipController');
+=======
 
 Route::group(['prefix' => 'setup', 'middleware' => 'auth:api'], function() {
 	// City
@@ -26,20 +40,12 @@ Route::group(['prefix' => 'setup', 'middleware' => 'auth:api'], function() {
 	Route::resource('/township', 'Api\TownshipController');
 
 
-
 });
 
+>>>>>>> 6b3fbdffa8c2fad432e8958022288c97a0649c92
 
 // Position
 Route::resource('/position', 'Api\PositionController');
-
-// Location
-Route::group(['prefix' => 'setup', 'middleware' => 'auth:api'], function() {
-	
-	Route::resource('/location', 'Api\LocationController');
-
-});
-
 
 // Expense
 Route::resource('/expense', 'Api\ExpenseController');
@@ -47,21 +53,8 @@ Route::resource('/expense', 'Api\ExpenseController');
 // Income
 Route::resource('/income', 'Api\IncomeController');
 
-// Course
-Route::group(['prefix' => 'setup', 'middleware' => 'auth:api'], function() {
-	
-	Route::resource('/course', 'Api\CourseController');
-
-
-});
-
 // Duration
-Route::group(['prefix' => 'setup', 'middleware' => 'auth:api'], function() {
-	
-	Route::resource('/duration', 'Api\DurationController');
-
-
-});
+Route::resource('/duration', 'Api\DurationController');
 
 // Staff
 Route::resource('/staff', 'Api\StaffController');
@@ -95,3 +88,6 @@ Route::resource('/dismiss', 'Api\DismissController');
 
 // Attendance
 Route::resource('/attendance', 'Api\AttendanceController');
+
+//Location
+Route::resource('/location', 'Api\LocationController');

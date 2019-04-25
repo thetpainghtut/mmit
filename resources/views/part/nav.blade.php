@@ -201,7 +201,10 @@
               <h6 class="collapse-header">
                 Staff Components:
               </h6>
-              <a class="collapse-item" href="staff"> 
+              <a class="collapse-item" href="{{route('teacher')}}"> 
+                Teacher 
+              </a>
+              <a class="collapse-item" href="{{route('staff')}}"> 
                 Staff 
               </a>
               

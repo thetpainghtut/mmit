@@ -78,11 +78,14 @@
             </div>
             <div class="form-group">
               <label for="names">Location:</label>
-                
-                <select class="form-control" name="location_id" v-model="location_id" id="locationid">
-                  <option disabled value="">Please select one</option>
-                  <option v-for="(location, index) in locations" :value="location.id" > {{ location.name }}  </option>
-                </select>
+                <input type="text" name="location" id="location" placeholder="Location" class="form-control" v-model="course.location">
+                <!-- <select class="form-control" name="location" id="location" v-model="course.location_id">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select> -->
             </div>
           </div>
           
@@ -121,10 +124,14 @@
             </div>
             <div class="form-group">
               <label for="names">Location:</label>
-                <select class="form-control"  name="location_id" v-model="update_course.locationid" id="locationid">
-                  
-                  <option v-for="(location, index) in locations" :value="location.id" :selected="location.id == update_course.locationid"> {{ location.name }}  </option>
-                </select>
+                <input type="text" placeholder="Location" class="form-control" v-model="update_course.location_id">
+                <!-- <select class="form-control" name="location" id="location" v-model="course.location_id">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select> -->
             </div>
             
           </div>
@@ -147,8 +154,6 @@
                course: {
                    name: ''
                },
-               locations:[],
-               location_id: '',
                errors: [],
                courses: [],
                update_course: {}
@@ -157,8 +162,6 @@
        mounted()
        {
            this.readCourses();
-           this.readLocations();
-
        },
        methods: {
            deleteCourse(index)
@@ -182,7 +185,7 @@
                axios.post('api/setup/course', {
                    name: this.course.name,
                    fees: this.course.fees,
-                   location: this.location_id,
+                   location: this.course.location,
 
                })
                    .then(response => {
@@ -206,13 +209,6 @@
                axios.get('api/setup/course')
                    .then(response => {
                        this.courses = response.data.courses;
-                   });
-           },
-           readLocations()
-           {
-               axios.get('api/setup/location')
-                   .then(response => {
-                       this.locations = response.data.locations;
                    });
            },
            initUpdate(index)

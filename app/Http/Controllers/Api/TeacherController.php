@@ -4,7 +4,12 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Model\Teacher;
+use App\User;
+use App\Model\Course;
+use App\Http\Resources\TeacherResource;
+use Auth;
+use Illuminate\Support\Facades\DB;
 class TeacherController extends Controller
 {
     /**
@@ -15,6 +20,22 @@ class TeacherController extends Controller
     public function index()
     {
         //
+        /*SELECT users.name, courses.name from users
+        inner join teachers on users.id = teachers.user_id
+        inner join courses on courses.user_id = teachers.id*/
+        $courses = Course::all();
+        $teachers = DB::table('teachers')
+            ->join('courses', 'courses.id', '=', 'teachers.course_id')
+            ->join('users', 'users.id', '=', 'teachers.user_id')
+            ->select('teachers.*', 'courses.name as coursename', 'users.name as username')
+            ->get();
+        $teachers =  TeacherResource::collection($teachers);
+
+        return response()->json([
+            'teachers' => $teachers,
+        ],200);
+
+        
     }
 
     /**
@@ -26,6 +47,22 @@ class TeacherController extends Controller
     public function store(Request $request)
     {
         //
+        /*$this->validate($request, [
+            'name'  => 'required',
+        ]);*/
+
+        $teacher = Teacher::create([
+            'staff_id'  =>  request('staff_id'),
+            'course_id'  =>  request('course_id'),
+            'user_id'    =>  Auth::user()->id,
+        ]);
+
+        $teacher = new TeacherResource($teacher);
+
+        return response()->json([
+            'teacher'  =>  $teacher,
+            'message'   =>  'Successfully Added!'
+        ],200);
     }
 
     /**
@@ -49,6 +86,20 @@ class TeacherController extends Controller
     public function update(Request $request, $id)
     {
         //
+        /*$this->validate($request, [
+            'name'  =>  'required|max:255',
+        ]);*/
+        $teacher = Teacher::find($id);
+
+        $teacher->staff_id = request('staff_id');        
+        $teacher->course_id = request('course_id');
+
+        $teacher->user_id=  Auth::user()->id;
+        $teacher->save();
+
+        return response()->json([
+            'message'   =>  'Teacher updated successfully!'
+        ],200);
     }
 
     /**
@@ -60,5 +111,12 @@ class TeacherController extends Controller
     public function destroy($id)
     {
         //
+        $teacher = Teacher::find($id);
+        $teacher->delete();
+
+        return response()->json([
+            'message'   =>  'Teacher deleted successfully!'
+        ],200);
     }
+    
 }
