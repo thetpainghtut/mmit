@@ -18,3 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/course', 'Course_Controller@index')->name('course');
+
+Route::get('/location', 'Location_Controller@index')->name('location');
+
+Route::get('/duration', 'Duration_Controller@index')->name('duration');
+
+

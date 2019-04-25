@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Model\Course;
+use App\User;
+use App\Http\Resources\CourseResource;
+use Auth;
 
 class CourseController extends Controller
 {
@@ -15,6 +19,12 @@ class CourseController extends Controller
     public function index()
     {
         //
+        $courses = Course::all();
+        $courses =  CourseResource::collection($courses);
+
+        return response()->json([
+            'courses' => $courses,
+        ],200);
     }
 
     /**
@@ -26,6 +36,23 @@ class CourseController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+            'name'  => 'required',
+        ]);
+
+        $course = Course::create([
+            'name'  =>  request('name'),
+            'fees'  =>  request('fees'),
+            'location_id'  =>  request('location'),
+            'user_id'    =>  Auth::user()->id,
+        ]);
+
+        $course = new CourseResource($course);
+
+        return response()->json([
+            'course'  =>  $course,
+            'message'   =>  'Successfully Added!'
+        ],200);
     }
 
     /**
@@ -49,6 +76,22 @@ class CourseController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request, [
+            'name'  =>  'required|max:255',
+        ]);
+        $course = Course::find($id);
+
+        $course->name = request('name');
+        $course->fees = request('fees');
+        
+        $course->location_id = request('location');
+
+        $course->user_id=  '1';
+        $course->save();
+
+        return response()->json([
+            'message'   =>  'Course updated successfully!'
+        ],200);
     }
 
     /**
@@ -60,5 +103,11 @@ class CourseController extends Controller
     public function destroy($id)
     {
         //
+        $course = Course::find($id);
+        $course->delete();
+
+        return response()->json([
+            'message'   =>  'Course deleted successfully!'
+        ],200);
     }
 }

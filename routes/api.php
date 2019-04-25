@@ -22,6 +22,7 @@ Route::group(['prefix' => 'setup', 'middleware' => 'auth:api'], function() {
 	
 	Route::resource('/city', 'Api\CityController');
 
+
 });
 
 // Township
@@ -31,7 +32,12 @@ Route::resource('/township', 'Api\TownshipController');
 Route::resource('/position', 'Api\PositionController');
 
 // Location
-Route::resource('/location', 'Api\LocationController');
+Route::group(['prefix' => 'setup', 'middleware' => 'auth:api'], function() {
+	
+	Route::resource('/location', 'Api\LocationController');
+
+});
+
 
 // Expense
 Route::resource('/expense', 'Api\ExpenseController');
@@ -40,10 +46,20 @@ Route::resource('/expense', 'Api\ExpenseController');
 Route::resource('/income', 'Api\IncomeController');
 
 // Course
-Route::resource('/course', 'Api\CourseController');
+Route::group(['prefix' => 'setup', 'middleware' => 'auth:api'], function() {
+	
+	Route::resource('/course', 'Api\CourseController');
+
+
+});
 
 // Duration
-Route::resource('/duration', 'Api\DurationController');
+Route::group(['prefix' => 'setup', 'middleware' => 'auth:api'], function() {
+	
+	Route::resource('/duration', 'Api\DurationController');
+
+
+});
 
 // Staff
 Route::resource('/staff', 'Api\StaffController');
