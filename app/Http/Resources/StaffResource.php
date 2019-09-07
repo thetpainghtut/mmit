@@ -5,6 +5,8 @@ namespace App\Http\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\User;
 use App\Model\Location;
+use App\Model\Staff;
+use App\Model\Role;
 
 class StaffResource extends JsonResource
 {
@@ -30,8 +32,15 @@ class StaffResource extends JsonResource
             'staff_locationid' => $this->location_id,
             'locationname' => $this->locationname,
             'username' => $this->username,
+            'userid'    =>  $this->userid,
+            'useremail' =>  $this->useremail,
+            'userroleid' => $this->userroleid,
+            'userpassword'  => $this->userpassword,
             'locations' => new LocationResource(Location::find($this->location_id)),
-            'username' => $this->username,
+            'users' => new UserResource(User::find($this->user_id)),
+            'rolename' => $this->rolename,
+            'roleid' => $this->roleid,
+            // 'roles' =>  new RoleResource(Role::find($this->userid->role_id))
         ];
     }
 }

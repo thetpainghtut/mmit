@@ -4,21 +4,25 @@
     <div class="row">
       <div class="col-md-12">
 
-        <h1 class="h3 mb-2 text-gray-800"> Teacher List </h1>
-
         <div class="card shadow mb-4">
           <div class="card-header py-3">
+
+            <h3 class="m-0 font-weight-bold text-primary"> Teacher List
+
+              <button @click="initAddTeacher()" class="btn btn-primary float-right ">
+                <i class="fa fa-plus"></i> Add New Teacher
+              </button>
+
+            </h3>
             
-            <button @click="initAddTeacher()" class="btn btn-success btn-lg float-right ">
-              Add New Teacher
-            </button>
+            
           </div>
 
           <div class="card-body">
             <div class="table-responsive">
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" v-if="teachers.length>0">
-                <thead>
-                  <tr>
+              <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0" v-if="teachers.length>0">
+                <thead class="bg-primary text-white">
+                  <tr class="text-center">
                     <th> No </th>
                     <th> Name </th>
                     <th> Course </th>
@@ -28,12 +32,19 @@
                 <tbody>
                   <tr v-for="(teacher, index) in teachers">
                     <td> {{ index + 1 }} </td>
-                    <td> {{ teacher.users.name }} </td>
-                    <td> {{ teacher.courses.name }} </td>
+                    <td> {{ teacher.username }} </td>
                     <td> 
-                      <button @click="initUpdate(index)" class="btn btn-success btn-xs" style="padding:8px">Edit</button>
+                      {{ teacher.courses.name }} 
+                      ( {{ teacher.cityname }} )
+                    </td>
+                    <td> 
+                      <button @click="initUpdate(index)" class="btn btn-warning btn-xs">
+                        <i class="fas fa-edit"></i> Edit
+                      </button>
                       
-                      <button @click="deleteTeacher(index)" class="btn btn-danger btn-xs" style="padding:8px">Delete</button>
+                      <button @click="deleteTeacher(index)" class="btn btn-danger btn-xs">
+                        <i class="fas fa-trash-alt"></i>  Delete
+                      </button>
                     </td>
                   </tr>
                 </tbody>
@@ -75,15 +86,23 @@
               <label for="names">Course:</label>
                 <select v-model="course_id" class="form-control" id="courseid" name="course_id">
                   <option disabled value="">Please chooose one</option>
-                  <option v-for="(course, index) in courses" :value="course.id">{{course.name}}</option>
+                  <option v-for="(course, index) in courses" :value="course.id">
+                    {{course.name}} ( {{ course.cityname }} )
+                  </option>
                 </select>
             </div>
+
+
           </div>
           
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              <i class="fa fa-times"></i> Close
+            </button>
             
-            <button type="button" @click="createTeacher" class="btn btn-primary">Submit</button>
+            <button type="button" @click="createTeacher" class="btn btn-primary">
+              <i class="fa fa-save pr-2">  </i> Save
+            </button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
@@ -114,7 +133,9 @@
               <label for="names"> Course :</label>
                 <select class="form-control"  name="course_id" v-model="update_teacher.teacher_courseid" id="courseid">
     
-                <option v-for="(course, index) in courses" :value="course.id" :selected="course.id == update_teacher.teacher_courseid"> {{ course.name }}  </option>
+                <option v-for="(course, index) in courses" :value="course.id" :selected="course.id == update_teacher.teacher_courseid"> 
+                  {{ course.name }}  ( {{ course.cityname }} )
+                 </option>
                </select>
           </div>
             
@@ -122,9 +143,13 @@
           </div>
               
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              <i class="fa fa-times"></i> Close
+            </button>
                 
-            <button type="button" @click="updateTeacher" class="btn btn-primary">Submit</button>
+            <button type="button" @click="updateTeacher" class="btn btn-primary">
+              <i class="fa fa-upload pr-2">  </i> Update
+            </button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
@@ -184,6 +209,9 @@
                        this.reset();
                        this.teachers.push(response.data.teachers);
                        $("#add_teacher_model").modal("hide");
+                       this.readTeachers();
+                       this.readCourses();
+                       this.readStaffs();
                    })
                    .catch(error => {
                        this.errors = [];
@@ -215,13 +243,14 @@
            {
                axios.get('/api/setup/staff')
                    .then(response => {
-                       this.staffs = response.data.staffs;
+                       this.staffs = response.data.teacherstaffs;
                    });
            },
            initUpdate(index)
            {
                this.errors = [];
                $("#update_teacher_model").modal("show");
+
                this.update_teacher = this.teachers[index];
            },
            updateTeacher()
@@ -233,6 +262,9 @@
                })
                    .then(response => {
                        $("#update_teacher_model").modal("hide");
+                       this.readTeachers();
+                       this.readCourses();
+                       this.readStaffs();
                    })
                    .catch(error => {
                        this.errors = [];

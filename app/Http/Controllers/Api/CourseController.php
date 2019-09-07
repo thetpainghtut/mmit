@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Course;
+use App\Model\Location;
 use App\User;
 use App\Http\Resources\CourseResource;
 use Auth;
+use Illuminate\Support\Facades\DB;
 
 class CourseController extends Controller
 {
@@ -19,7 +21,15 @@ class CourseController extends Controller
     public function index()
     {
         //
-        $courses = Course::all();
+        
+        $locations = Location::all();
+        $courses =  DB::table('courses')
+            ->join('locations', 'locations.id', '=', 'courses.location_id')
+            ->join('users', 'users.id', '=', 'courses.user_id')
+            ->join('cities', 'cities.id', '=', 'locations.city_id')
+            ->select('courses.*', 'locations.name as locationname', 'users.name as username','cities.name as cityname')
+            ->get();
+
         $courses =  CourseResource::collection($courses);
 
         return response()->json([
@@ -79,6 +89,7 @@ class CourseController extends Controller
         $this->validate($request, [
             'name'  =>  'required|max:255',
         ]);
+        // dd(request('location'));
         $course = Course::find($id);
 
         $course->name = request('name');
@@ -86,7 +97,7 @@ class CourseController extends Controller
         
         $course->location_id = request('location');
 
-        $course->user_id=  '1';
+        $course->user_id=  Auth::user()->id;
         $course->save();
 
         return response()->json([

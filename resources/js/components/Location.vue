@@ -4,23 +4,27 @@
     <div class="row">
       <div class="col-md-12">
 
-        <h1 class="h3 mb-2 text-gray-800"> Location List </h1>
 
         <div class="card shadow mb-4">
           <div class="card-header py-3">
-            
-            <button @click="initAddCourse()" class="btn btn-success btn-lg float-right ">
-              Add New Location
-            </button>
+            <h3 class="m-0 font-weight-bold text-primary"> Location List
+
+              <button @click="initAddLocation()" class="btn btn-primary float-right ">
+                <i class="fa fa-plus"></i>
+                Add New Location
+              </button>
+            </h3>
+
           </div>
 
           <div class="card-body">
             <div class="table-responsive">
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" v-if="courses.length>0">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" v-if="locations.length > 0">
                 <thead>
                   <tr>
                     <th> No </th>
-                    <th> Name </th>
+                    <th style="width: 500px"> Name </th>
+                    <th> City </th>
                     <th> Action </th>
                   </tr>
                 </thead>
@@ -28,10 +32,16 @@
                   <tr v-for="(location, index) in locations">
                     <td> {{ index + 1 }} </td>
                     <td> {{ location.name }} </td>
+                    <td> {{ location.city.name }} </td>
+
                     <td> 
-                      <button @click="initUpdate(index)" class="btn btn-success btn-xs" style="padding:8px">Edit</button>
+                      <button @click="initUpdate(index)" class="btn btn-warning">
+                        <i class="fas fa-edit"></i> Edit
+                      </button>
                       
-                      <button @click="deleteLocation(index)" class="btn btn-danger btn-xs" style="padding:8px">Delete</button>
+                      <button @click="deleteLocation(index)" class="btn btn-danger">
+                        <i class="fas fa-trash-alt"></i> Delete
+                      </button>
                     </td>
                   </tr>
                 </tbody>
@@ -61,41 +71,34 @@
             </div>
             
             <div class="form-group">
-              <label for="names">Name:</label>
-                <input type="text" name="name" id="name" placeholder="Course Name" class="form-control" v-model="location.name">
+              <label for="names">Location Name:</label>
+                <input type="text" name="name" id="name" placeholder="Location Name" class="form-control" v-model="location.name">
             </div>
             <div class="form-group">
-              <label for="names">Fees:</label>
-                <input type="text" name="fees" id="fees" placeholder="Course Fees" class="form-control" v-model="course.fees">
-
+              <label for="names">City:</label>
+                
+                <select class="form-control" name="city_id" v-model="city_id" id="cityid">
+                  <option disabled value="">Please select one</option>
+                  <option v-for="(city, index) in cities" :value="city.id" > {{ city.name }}  </option>
+                </select>
             </div>
-            <div class="form-group">
-              <label for="names">Location:</label>
-                <input type="text" name="location" id="location" placeholder="Location" class="form-control" v-model="course.location">
-                <!-- <select class="form-control" name="location" id="location" v-model="course.location_id">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select> -->
-            </div>
+            
           </div>
           
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             
-            <button type="button" @click="createCourse" class="btn btn-primary">Submit</button>
+            <button type="button" @click="createLocation" class="btn btn-primary">Submit</button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
-    <div class="modal fade" tabindex="-1" role="dialog" id="update_course_model">
+    <div class="modal fade" tabindex="-1" role="dialog" id="update_location_model">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">Update Course</h4>
+            <h4 class="modal-title">Update Location</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           </div>
           
@@ -107,24 +110,16 @@
             </div>
             
             <div class="form-group">
-              <label>Name:</label>
-                <input type="text" placeholder="Course Name" class="form-control" v-model="update_course.name">
+              <label for="names">Location Name:</label>
+                <input type="text" name="name" id="name" placeholder="Location Name" class="form-control" v-model="update_location.name">
             </div>
             <div class="form-group">
-              <label for="names">Fees:</label>
-                <input type="text" placeholder="Course Fees" class="form-control" v-model="update_course.fees">
-
-            </div>
-            <div class="form-group">
-              <label for="names">Location:</label>
-                <input type="text" placeholder="Location" class="form-control" v-model="update_course.location_id">
-                <!-- <select class="form-control" name="location" id="location" v-model="course.location_id">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select> -->
+              <label for="names">City:</label>
+                
+                <select class="form-control"  name="city_id" v-model="update_location.cityid" id="cityid">
+                  
+                  <option v-for="(city, index) in cities" :value="city.id" :selected="city.id == update_location.cityid"> {{ city.name }}  </option>
+                </select>
             </div>
             
           </div>
@@ -132,7 +127,7 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 
-            <button type="button" @click="updateCourse" class="btn btn-primary">Submit</button>
+            <button type="button" @click="updateLocation" class="btn btn-primary">Submit</button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
@@ -144,47 +139,51 @@
    export default {
        data(){
            return {
-               course: {
+               location: {
                    name: ''
                },
+               cities:[],
+               city_id: '',
                errors: [],
-               courses: [],
-               update_course: {}
+               locations: [],
+               update_location: {}
            }
        },
+
        mounted()
        {
-           this.readCourses();
+           this.readLocations();
+          this.readCities();
+
        },
        methods: {
-           deleteCourse(index)
+           deleteLocation(index)
            {
-               let conf = confirm("Do you ready want to delete this Course?");
+               let conf = confirm("Do you ready want to delete this Location?");
                if (conf === true) {
-                   axios.delete('api/setup/course/' + this.courses[index].id)
+                   axios.delete('api/setup/location/' + this.locations[index].id)
                        .then(response => {
-                           this.courses.splice(index, 1);
+                           this.locations.splice(index, 1);
                        })
                        .catch(error => {
                        });
                }
            },
-           initAddCourse()
+           initAddLocation()
            {
-               $("#add_course_model").modal("show");
+               $("#add_location_model").modal("show");
            },
-           createCourse()
+           createLocation()
            {
-               axios.post('api/setup/course', {
-                   name: this.course.name,
-                   fees: this.course.fees,
-                   location: this.course.location,
+               axios.post('api/setup/location', {
+                   name: this.location.name,
+                   city_id: this.city_id,
 
                })
                    .then(response => {
                        this.reset();
-                       this.courses.push(response.data.course);
-                       $("#add_course_model").modal("hide");
+                       this.locations.push(response.data.location);
+                       $("#add_location_model").modal("hide");
                    })
                    .catch(error => {
                        this.errors = [];
@@ -195,31 +194,37 @@
            },
            reset()
            {
-               this.course.name = '';
+               this.location.name = '';
            },
-           readCourses()
+           readLocations()
            {
-               axios.get('api/setup/course')
+               axios.get('api/setup/location')
                    .then(response => {
-                       this.courses = response.data.courses;
+                       this.locations = response.data.locations;
+                   });
+           },
+           readCities()
+           {
+               axios.get('/api/setup/city')
+                   .then(response => {
+                       this.cities = response.data.cities;
                    });
            },
            initUpdate(index)
            {
                this.errors = [];
-               $("#update_course_model").modal("show");
-               this.update_course = this.courses[index];
+               $("#update_location_model").modal("show");
+               this.update_location = this.locations[index];
            },
-           updateCourse()
+           updateLocation()
            {
-               axios.patch('api/setup/course/' + this.update_course.id, {
-                   name: this.update_course.name,
-                   fees: this.update_course.fees,
-                   location: this.update_course.location_id,
+               axios.patch('api/setup/location/' + this.update_location.id, {
+                   name: this.update_location.name,
+                   city_id: this.update_location.cityid,
 
                })
                    .then(response => {
-                       $("#update_course_model").modal("hide");
+                       $("#update_location_model").modal("hide");
                    })
                    .catch(error => {
                        this.errors = [];

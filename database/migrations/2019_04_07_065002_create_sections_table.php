@@ -25,11 +25,18 @@ class CreateSectionsTable extends Migration
             $table->unsignedBigInteger('duration_id');
 
             //teacher
-            $table->unsignedBigInteger('teacher_id');
+            // $table->unsignedBigInteger('teacher_id');
 
             //user
             $table->unsignedBigInteger('user_id');
 
+            $table->timestamps();
+        });
+
+        Schema::create('section_teacher', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('section_id');
+            $table->unsignedBigInteger('teacher_id');
             $table->timestamps();
         });
     }

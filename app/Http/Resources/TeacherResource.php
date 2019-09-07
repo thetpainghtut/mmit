@@ -23,6 +23,7 @@ class TeacherResource extends JsonResource
             'id' => $this->id,
             'coursename' => $this->coursename,
             'username' => $this->username,
+            'cityname'  =>  $this->cityname,
             'users' => new UserResource(User::find($this->user_id)),
             'staffs' => new StaffResource(Staff::find($this->staff_id)),
             'courses' => new CourseResource(Course::find($this->course_id)),

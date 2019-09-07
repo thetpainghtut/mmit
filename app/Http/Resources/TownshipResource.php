@@ -5,6 +5,10 @@ namespace App\Http\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Model\Township;
 use App\Model\City;
+use App\User;
+
+use App\Http\Resources\CityResource;
+use App\Http\Resources\UserResource;
 
 class TownshipResource extends JsonResource
 {
@@ -21,10 +25,9 @@ class TownshipResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'tsp_cityid' => $this->city_id,
-            'cityname' => $this->cityname,
-            // 'cityid'   => $this->cityid,
-            'username' => $this->username
+            'city_id' => $this->city_id,
+            'city' => new CityResource(City::find($this->city_id)),
+            'user' => new UserResource(User::find($this->user_id))
         ];
     }
 }

@@ -1,26 +1,56 @@
 <template>
-  
-
 
   <div class="container">
     <div class="row">
       <div class="col-md-12">
 
-        <h1 class="h3 mb-2 text-gray-800"> Township List </h1>
+        <div class="alert alert-success alert-dismissible fade show" role="alert" v-if="add_noti">
+            
+            <strong>SUCCESS!</strong> {{ message }}
+            
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div class="alert alert-warning alert-dismissible fade show" role="alert" v-if="update_noti">
+            
+            <strong>SUCCESS!</strong> {{ message }}
+            
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" v-if="delete_noti">
+            
+            <strong>SUCCESS!</strong> {{ message }}
+            
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
 
         <div class="card shadow mb-4">
           <div class="card-header py-3">
+
+            <h3 class="m-0 font-weight-bold text-primary"> 
+              Township List
+
+              <button @click="initAddTownship()" class="btn btn-primary float-right ">
+                <i class="fa fa-plus"></i> Add New Township
+              </button>
+
+            </h3>
             
-            <button @click="initAddTownship()" class="btn btn-success btn-lg float-right ">
-              Add New Township
-            </button>
+            
           </div>
 
           <div class="card-body">
             <div class="table-responsive">
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" v-if="townships.length > 0">
-                <thead>
-                  <tr>
+              <table class="table table-bordered table-hover" id="dataTable" cellspacing="0" v-if="townships.length > 0">
+                <thead class="bg-primary text-white">
+                  <tr class="text-center">
                     <th> No </th>
                     <th> Township </th>
                     <th> City </th>
@@ -32,12 +62,16 @@
                     
                     <td> {{ index + 1 }} </td>
                     <td> {{ township.name }} </td>
-                    <td> {{ township.cityname }} </td>
+                    <td> {{ township.city.name }} </td>
 
                     <td> 
-                      <button @click="initUpdate(index)" class="btn btn-success btn-xs" style="padding:8px">Edit</button>
+                      <button @click="initUpdate(index)" class="btn btn-warning btn-xs">
+                        <i class="fas fa-edit"></i> Edit
+                      </button>
                       
-                      <button @click="deletetownship(index)" class="btn btn-danger btn-xs" style="padding:8px">Delete</button>
+                      <button @click="deletetownship(index)" class="btn btn-danger btn-xs">
+                        <i class="fas fa-trash-alt"></i>  Delete
+                      </button>
                     </td>
                   </tr>
                 </tbody>
@@ -82,9 +116,13 @@
           </div>
           
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              <i class="fa fa-times"></i> Close
+            </button>
             
-            <button type="button" @click="createTownship" class="btn btn-primary">Submit</button>
+            <button type="button" @click="createTownship" class="btn btn-primary">
+              <i class="fa fa-save pr-2">  </i> Save
+            </button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
@@ -107,23 +145,27 @@
             
             <div class="form-group">
               <label>Name:</label>
-                <input type="text" placeholder="township Name" class="form-control" v-model="update_township.name">
+                <input type="text" placeholder="township Name" class="form-control" v-model="clone_update_township.name">
             </div>
 
             <div class="form-group">
               <label for="names"> City :</label>
-                <select class="form-control"  name="city_id" v-model="update_township.tsp_cityid" id="cityid">
+                <select class="form-control"  name="city_id" v-model="clone_update_township.city_id" id="cityid">
                   
-                  <option v-for="(city, index) in cities" :value="city.id" :selected="city.id == update_township.tsp_cityid"> {{ city.name }}  </option>
+                  <option v-for="(city, index) in cities" :value="city.id" :selected="city.id == clone_update_township.city_id"> {{ city.name }}  </option>
                 </select>
             </div>
             
           </div>
               
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              <i class="fa fa-times"></i> Close
+            </button>
                 
-            <button type="button" @click="updateTownship" class="btn btn-primary">Submit</button>
+            <button type="button" @click="updateTownship" class="btn btn-primary">
+              <i class="fa fa-upload"></i> Update
+            </button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
@@ -131,7 +173,9 @@
   </div>
 </template>
 
+
 <script>
+
    export default {
        data(){
            return {
@@ -142,11 +186,17 @@
                city_id: '',
                errors: [],
                townships: [],
-               update_township: {}
+               add_noti:false,
+               update_noti:false,
+               delete_noti:false,
+               message:'',
+               update_township: {},
+               clone_update_township: {}
            }
        },
        mounted()
        {
+
           this.readTownships();
           this.readCities();
        },
@@ -158,6 +208,8 @@
                    axios.delete('/api/setup/township/' + this.townships[index].id)
                        .then(response => {
                            this.townships.splice(index, 1);
+                           this.delete_noti=true;
+                           this.message="Existing township has been sucessfully deleted!!";
                        })
                        .catch(error => {
                        });
@@ -176,7 +228,12 @@
                    .then(response => {
                        this.reset();
                        this.townships.push(response.data.township);
+                       this.add_noti=true;
+                       this.message="New township has been sucessfully added!!";
                        $("#add_township_model").modal("hide");
+                       this.readTownships();
+                       this.readCities();
+
                    })
                    .catch(error => {
                        this.errors = [];
@@ -210,16 +267,23 @@
                this.errors = [];
                $("#update_township_model").modal("show");
                this.update_township = this.townships[index];
+               var clonedata = this.townships.slice(index);
+               this.clone_update_township = clonedata[0];
+
            },
 
            updateTownship()
            {
-               axios.patch('/api/setup/township/' + this.update_township.id, {
-                   name: this.update_township.name,
-                   city_id : this.update_township.tsp_cityid,
+               axios.patch('/api/setup/township/' + this.clone_update_township.id, {
+                   name: this.clone_update_township.name,
+                   city_id : this.clone_update_township.city_id,
                })
                    .then(response => {
+                        this.update_noti=true;
+                       this.message="Existing township has been sucessfully updated!!";
                        $("#update_township_model").modal("hide");
+                       this.readTownships();
+                       this.readCities();
                    })
                    .catch(error => {
                        this.errors = [];

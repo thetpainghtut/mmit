@@ -26,8 +26,11 @@ class TeacherController extends Controller
         $courses = Course::all();
         $teachers = DB::table('teachers')
             ->join('courses', 'courses.id', '=', 'teachers.course_id')
-            ->join('users', 'users.id', '=', 'teachers.user_id')
-            ->select('teachers.*', 'courses.name as coursename', 'users.name as username')
+           ->join('staffs', 'staffs.id', '=', 'teachers.staff_id')
+           ->join('users', 'users.id', '=', 'staffs.user_id')
+           ->join('locations', 'locations.id', '=', 'courses.location_id')
+           ->join('cities', 'cities.id', '=', 'locations.city_id')
+            ->select('teachers.*', 'courses.name as coursename', 'users.name as username','cities.name as cityname')
             ->get();
         $teachers =  TeacherResource::collection($teachers);
 
@@ -73,7 +76,25 @@ class TeacherController extends Controller
      */
     public function show($id)
     {
-        //
+        // dd($id);
+        $teachers = DB::table('teachers')
+            ->join('courses', 'courses.id', '=', 'teachers.course_id')
+            ->join('staffs', 'staffs.id', '=', 'teachers.staff_id')
+            ->join('users', 'users.id', '=', 'staffs.user_id')
+            ->join('locations', 'locations.id', '=', 'courses.location_id')
+            ->join('cities', 'cities.id', '=', 'locations.city_id')
+            ->where('courses.id',$id)
+            ->select('teachers.*', 'courses.name as coursename', 'users.name as username','cities.name as cityname')
+            ->get();
+            // dd($teachers);
+
+            $teachers =  TeacherResource::collection($teachers);
+
+            // dd($teachers);
+
+        return response()->json([
+            'teachers' => $teachers,
+        ],200);
     }
 
     /**

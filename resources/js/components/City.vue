@@ -1,26 +1,56 @@
 <template>
-  
-
 
   <div class="container">
     <div class="row">
       <div class="col-md-12">
 
-        <h1 class="h3 mb-2 text-gray-800"> City List </h1>
+        <div class="alert alert-success alert-dismissible fade show" role="alert" v-if="add_noti">
+            
+            <strong>SUCCESS!</strong> {{ message }}
+            
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div class="alert alert-warning alert-dismissible fade show" role="alert" v-if="update_noti">
+            
+            <strong>SUCCESS!</strong> {{ message }}
+            
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" v-if="delete_noti">
+            
+            <strong>SUCCESS!</strong> {{ message }}
+            
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+
 
         <div class="card shadow mb-4">
           <div class="card-header py-3">
             
-            <button @click="initAddCity()" class="btn btn-success btn-lg float-right ">
-              Add New City
-            </button>
+            <h3 class="m-0 font-weight-bold text-primary"> City List
+
+              <button @click="initAddCity()" class="btn btn-primary float-right ">
+                <i class="fa fa-plus"></i> Add New City
+              </button>
+
+            </h3>
+
           </div>
 
           <div class="card-body">
             <div class="table-responsive">
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" v-if="cities.length > 0">
-                <thead>
-                  <tr>
+              <table class="table table-bordered table-hover" id="dataTable" cellspacing="0" v-if="cities.length > 0">
+                <thead class="bg-primary text-white">
+                  <tr class="text-center">
                     <th> No </th>
                     <th> Name </th>
                     <th> Action </th>
@@ -31,9 +61,13 @@
                     <td> {{ index + 1 }} </td>
                     <td> {{ city.name }} </td>
                     <td> 
-                      <button @click="initUpdate(index)" class="btn btn-success btn-xs" style="padding:8px">Edit</button>
+                      <button @click="initUpdate(city.id, city.name)" class="btn btn-warning btn-xs">
+                        <i class="fas fa-edit"></i> Edit
+                      </button>
                       
-                      <button @click="deleteCity(index)" class="btn btn-danger btn-xs" style="padding:8px">Delete</button>
+                      <button @click="deleteCity(index)" class="btn btn-danger btn-xs">
+                        <i class="fas fa-trash-alt"></i>  Delete
+                      </button>
                     </td>
                   </tr>
                 </tbody>
@@ -69,9 +103,13 @@
           </div>
           
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              <i class="fa fa-times"></i> Close
+            </button>
             
-            <button type="button" @click="createCity" class="btn btn-primary">Submit</button>
+            <button type="button" @click="createCity" class="btn btn-primary">
+              <i class="fa fa-save pr-2">  </i> Save
+            </button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
@@ -100,9 +138,13 @@
           </div>
               
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              <i class="fa fa-times"></i> Close
+            </button>
                 
-            <button type="button" @click="updateCity" class="btn btn-primary">Submit</button>
+            <button type="button" @click="updateCity" class="btn btn-primary">
+              <i class="fa fa-upload"></i> Update
+            </button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
@@ -111,6 +153,8 @@
 </template>
 
 <script>
+
+
    export default {
        data(){
            return {
@@ -118,26 +162,33 @@
                    name: ''
                },
                errors: [],
+               add_noti:false,
+               update_noti:false,
+               delete_noti:false,
+               message:'',
                cities: [],
                update_city: {}
            }
        },
        mounted()
        {
-           this.readCities();
+          $('#dataTable').DataTable(this.readCities());
        },
        methods: {
            deleteCity(index)
            {
-               let conf = confirm("Do you ready want to delete this city?");
-               if (conf === true) {
-                   axios.delete('/api/setup/city/' + this.cities[index].id)
+              let conf = confirm("Do you ready want to delete this city?");
+              if (conf === true) 
+              {
+                axios.delete('/api/setup/city/' + this.cities[index].id)
                        .then(response => {
                            this.cities.splice(index, 1);
+                           this.delete_noti=true;
+                           this.message="Existing city has been sucessfully deleted!!";
                        })
                        .catch(error => {
                        });
-               }
+              }
            },
            initAddCity()
            {
@@ -151,7 +202,10 @@
                    .then(response => {
                        this.reset();
                        this.cities.push(response.data.city);
+                       this.add_noti=true;
+                       this.message="New city has been sucessfully added!!";
                        $("#add_city_model").modal("hide");
+                       this.readCities();
                    })
                    .catch(error => {
                        this.errors = [];
@@ -171,11 +225,12 @@
                        this.cities = response.data.cities;
                    });
            },
-           initUpdate(index)
+           initUpdate(val_id, val_name)
            {
                this.errors = [];
                $("#update_city_model").modal("show");
-               this.update_city = this.cities[index];
+               this.update_city.id = val_id;
+               this.update_city.name = val_name;
            },
            updateCity()
            {
@@ -183,7 +238,10 @@
                    name: this.update_city.name,
                })
                    .then(response => {
+                       this.update_noti=true;
+                       this.message="Existing city has been sucessfully updated!!";
                        $("#update_city_model").modal("hide");
+                       this.readCities();
                    })
                    .catch(error => {
                        this.errors = [];

@@ -18,6 +18,7 @@ class CreateStaffsTable extends Migration
             $table->string('dob');
             $table->string('fathername');
             $table->string('nrc');
+            $table->string('phone');
             $table->longText('photo');
             $table->date('joineddate');
             $table->date('leavedate');
@@ -28,6 +29,8 @@ class CreateStaffsTable extends Migration
 
             //user
             $table->unsignedBigInteger('user_id');
+
+            
 
             $table->timestamps();
         });

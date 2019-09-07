@@ -32,7 +32,7 @@ class LocationsTableSeeder extends Seeder
         //လမ္း ၄၀ ၊ ၇၀x ၇၁ ၾကား ၊ ၀ါၿမဲ Learning Center
         DB::table('locations')->insert([
             'name' 		 => 'လမ္း ၄၀ ၊ ၇၀x ၇၁ ၾကား ၊ ၀ါၿမဲ Learning Center',
-            'city_id'	 =>	'1',
+            'city_id'	 =>	'2',
             'user_id'    => '1',
             'created_at' => now(),
 	        'updated_at' => now()

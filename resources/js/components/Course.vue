@@ -4,34 +4,76 @@
     <div class="row">
       <div class="col-md-12">
 
-        <h1 class="h3 mb-2 text-gray-800"> Course List </h1>
+        <div class="alert alert-success alert-dismissible fade show" role="alert" v-if="add_noti">
+            
+            <strong>SUCCESS!</strong> {{ message }}
+            
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div class="alert alert-warning alert-dismissible fade show" role="alert" v-if="update_noti">
+            
+            <strong>SUCCESS!</strong> {{ message }}
+            
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" v-if="delete_noti">
+            
+            <strong>SUCCESS!</strong> {{ message }}
+            
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
 
         <div class="card shadow mb-4">
           <div class="card-header py-3">
+
+            <h3 class="m-0 font-weight-bold text-primary"> Course List
+
+              <button @click="initAddCourse()" class="btn btn-primary float-right ">
+                <i class="fa fa-plus"></i> Add New Course
+              </button>
+
+            </h3>
             
-            <button @click="initAddCourse()" class="btn btn-success btn-lg float-right ">
-              Add New Course
-            </button>
+            
           </div>
 
           <div class="card-body">
             <div class="table-responsive">
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" v-if="courses.length>0">
-                <thead>
-                  <tr>
+              <table class="table table-bordered table-hover" id="table_id" cellspacing="0" v-if="courses.length>0">
+                <thead class="bg-primary text-white">
+                  <tr class="text-center">
                     <th> No </th>
                     <th> Name </th>
+                    <th> Fees </th>
                     <th> Action </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr v-for="(course, index) in courses">
                     <td> {{ index + 1 }} </td>
-                    <td> {{ course.name }} </td>
                     <td> 
-                      <button @click="initUpdate(index)" class="btn btn-success btn-xs" style="padding:8px">Edit</button>
+                      {{ course.name }}
+                      ( {{ course.location.city.name }} )
+                    </td>
+                    <td>
+                      {{ course.fees }}
+                    </td>
+                    <td> 
+                      <button @click="initUpdate(index)" class="btn btn-warning">
+                        <i class="fas fa-edit"></i> Edit
+                      </button>
                       
-                      <button @click="deleteCourse(index)" class="btn btn-danger btn-xs" style="padding:8px">Delete</button>
+                      <button @click="deleteCourse(index)" class="btn btn-danger">
+                        <i class="fas fa-trash-alt"></i> Delete
+                      </button>
                     </td>
                   </tr>
                 </tbody>
@@ -46,7 +88,7 @@
     </div>
     
     <div class="modal fade" tabindex="-1" role="dialog" id="add_course_model">
-      <div class="modal-dialog" role="document">
+      <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h4 class="modal-title">Add New Course</h4>
@@ -71,28 +113,29 @@
             </div>
             <div class="form-group">
               <label for="names">Location:</label>
-                <input type="text" name="location" id="location" placeholder="Location" class="form-control" v-model="course.location">
-                <!-- <select class="form-control" name="location" id="location" v-model="course.location_id">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select> -->
+                
+                <select class="form-control" name="location_id" v-model="location_id" id="locationid">
+                  <option disabled value="">Please select one</option>
+                  <option v-for="(location, index) in locations" :value="location.id" > {{ location.name }}  </option>
+                </select>
             </div>
           </div>
           
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              <i class="fa fa-times"></i>  Close
+            </button>
             
-            <button type="button" @click="createCourse" class="btn btn-primary">Submit</button>
+            <button type="button" @click="createCourse" class="btn btn-primary">
+              <i class="fa fa-save pr-2"> </i> Save
+            </button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
     <div class="modal fade" tabindex="-1" role="dialog" id="update_course_model">
-      <div class="modal-dialog" role="document">
+      <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h4 class="modal-title">Update Course</h4>
@@ -117,22 +160,22 @@
             </div>
             <div class="form-group">
               <label for="names">Location:</label>
-                <input type="text" placeholder="Location" class="form-control" v-model="update_course.location_id">
-                <!-- <select class="form-control" name="location" id="location" v-model="course.location_id">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select> -->
+                <select class="form-control"  name="location_id" v-model="update_course.locationid" id="locationid">
+                  
+                  <option v-for="(location, index) in locations" :value="location.id" :selected="location.id == update_course.locationid"> {{ location.name }}  </option>
+                </select>
             </div>
             
           </div>
               
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              <i class="fa fa-times"></i> Close
+            </button>
                 
-            <button type="button" @click="updateCourse" class="btn btn-primary">Submit</button>
+            <button type="button" @click="updateCourse" class="btn btn-primary">
+              <i class="fa fa-upload"></i> Update
+            </button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
@@ -147,7 +190,13 @@
                course: {
                    name: ''
                },
+               locations:[],
+               location_id: '',
                errors: [],
+               add_noti:false,
+               update_noti:false,
+               delete_noti:false,
+               message:'',
                courses: [],
                update_course: {}
            }
@@ -155,6 +204,8 @@
        mounted()
        {
            this.readCourses();
+           this.readLocations();
+
        },
        methods: {
            deleteCourse(index)
@@ -164,6 +215,8 @@
                    axios.delete('api/setup/course/' + this.courses[index].id)
                        .then(response => {
                            this.courses.splice(index, 1);
+                           this.delete_noti=true;
+                           this.message="Existing course has been sucessfully deleted!!";
                        })
                        .catch(error => {
                        });
@@ -178,13 +231,18 @@
                axios.post('api/setup/course', {
                    name: this.course.name,
                    fees: this.course.fees,
-                   location: this.course.location,
+                   location: this.location_id,
 
                })
                    .then(response => {
                        this.reset();
                        this.courses.push(response.data.course);
+                       this.add_noti=true;
+                       this.message="New course has been sucessfully added!!";
                        $("#add_course_model").modal("hide");
+                       this.readCourses();
+                       this.readLocations();
+
                    })
                    .catch(error => {
                        this.errors = [];
@@ -204,6 +262,13 @@
                        this.courses = response.data.courses;
                    });
            },
+           readLocations()
+           {
+               axios.get('api/setup/location')
+                   .then(response => {
+                       this.locations = response.data.locations;
+                   });
+           },
            initUpdate(index)
            {
                this.errors = [];
@@ -215,11 +280,15 @@
                axios.patch('api/setup/course/' + this.update_course.id, {
                    name: this.update_course.name,
                    fees: this.update_course.fees,
-                   location: this.update_course.location_id,
+                   location: this.update_course.locationid,
 
                })
                    .then(response => {
+                       this.update_noti=true;
+                       this.message="Existing course has been sucessfully updated!!";
                        $("#update_course_model").modal("hide");
+                       this.readCourses();
+                       this.readLocations();
                    })
                    .catch(error => {
                        this.errors = [];

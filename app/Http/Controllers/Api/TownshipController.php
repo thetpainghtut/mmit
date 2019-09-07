@@ -23,17 +23,53 @@ class TownshipController extends Controller
     public function index()
     {
         $cities = City::all();
-        $townships =  DB::table('townships')
-            ->join('cities', 'cities.id', '=', 'townships.city_id')
-            ->join('users', 'users.id', '=', 'townships.user_id')
-            ->select('townships.*', 'cities.name as cityname', 'users.name as username')
-            ->get();
+        $townships =  Township::all();
 
         $townships =  TownshipResource::collection($townships);
 
         return response()->json([
             'townships' => $townships,
         ],200);
+    }
+    public function index_datatable()
+    {
+        $cities = City::all();
+        $townships =  Township::all();
+
+        $townships = DB::table("townships")
+                    ->join('cities','cities.id', 'townships.city_id')
+                    ->join('users','users.id', 'townships.user_id')
+                    ->select(
+                                'townships.*',
+                                'cities.name as cityname'
+                            )
+                    ->get();
+
+
+        // $townships =  TownshipResource::collection($townships);
+
+        // return response()->json([
+        //     'townships' => $townships,
+        // ],200);
+
+        // return datatables()->of($townships)->make(true);
+            return datatables()->of($townships)
+                    ->addColumn('action', function($row){
+
+                           $btn =' <button data-id="'.$row->id.'" data-name="'.$row->name.'" data-cityid="'.$row->city_id.'" class="btn btn-warning btn-xs edit">
+                                    <i class="fas fa-edit"></i> Edit
+                                </button> 
+                                <button data-id="'.$row->id.'" class="btn btn-danger btn-xs delete">
+                                    <i class="fas fa-trash-alt"></i>  Delete
+                                </button>';
+
+                            return $btn;
+                            })
+                    ->rawColumns(['action'])
+                    ->make(true);
+
+
+        // return datatables()->collection(Township::all())->toJson();
     }
 
     /**
